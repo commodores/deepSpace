@@ -6,21 +6,36 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+  public static WPI_TalonSRX driveTrainLeftMotorA;
+  public static WPI_TalonSRX driveTrainLeftMotorB;
+  public static WPI_TalonSRX driveTrainLeftMotorC;
+  public static SpeedControllerGroup driveTrainLeftMotors;
+  public static WPI_TalonSRX driveTrainRightMotorA;
+  public static WPI_TalonSRX driveTrainRightMotorB;
+  public static WPI_TalonSRX driveTrainRightMotorC;
+  public static SpeedControllerGroup driveTrainRightMotors;
+  public static DifferentialDrive driveTrainDifferentialDrive;
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+  public static void init(){
+    driveTrainLeftMotorA = new WPI_TalonSRX(0);
+    driveTrainLeftMotorB = new WPI_TalonSRX(1);
+    driveTrainLeftMotorC = new WPI_TalonSRX(2);
+    driveTrainLeftMotors = new SpeedControllerGroup(driveTrainLeftMotorA, driveTrainLeftMotorB, driveTrainLeftMotorC);
+
+    driveTrainRightMotorA = new WPI_TalonSRX(3);
+    driveTrainRightMotorB = new WPI_TalonSRX(4);
+    driveTrainRightMotorC = new WPI_TalonSRX(5);
+    driveTrainRightMotors = new SpeedControllerGroup(driveTrainRightMotorA, driveTrainRightMotorB, driveTrainRightMotorC);
+
+    driveTrainDifferentialDrive = new DifferentialDrive(driveTrainLeftMotors, driveTrainRightMotors);
+      driveTrainDifferentialDrive.setSafetyEnabled(false);
+      driveTrainDifferentialDrive.setExpiration(0.1);
+      driveTrainDifferentialDrive.setMaxOutput(1.0);
+  }
 }
