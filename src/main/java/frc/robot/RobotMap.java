@@ -10,6 +10,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DigitalInput;
+import frc.lib.LIDARLite;
 
 public class RobotMap {
   public static WPI_TalonSRX driveTrainLeftMotorA;
@@ -21,6 +23,9 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainRightMotorC;
   public static SpeedControllerGroup driveTrainRightMotors;
   public static DifferentialDrive driveTrainDifferentialDrive;
+
+  public static DigitalInput lidarPort;
+  public static LIDARLite lidar;
 
   public static void init(){
     driveTrainLeftMotorA = new WPI_TalonSRX(0);
@@ -37,5 +42,8 @@ public class RobotMap {
       driveTrainDifferentialDrive.setSafetyEnabled(false);
       driveTrainDifferentialDrive.setExpiration(0.1);
       driveTrainDifferentialDrive.setMaxOutput(1.0);
+
+    lidarPort = new DigitalInput(0);
+    lidar = new LIDARLite(lidarPort);
   }
 }
