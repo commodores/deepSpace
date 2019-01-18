@@ -24,10 +24,10 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainRightMotorC;
   public static SpeedControllerGroup driveTrainRightMotors;
   public static DifferentialDrive driveTrainDifferentialDrive;
-  public static Compressor compressor;
 
   public static DigitalInput lidarPort;
   public static LIDARLite lidar;
+  public static Compressor compressor;
 
   public static void init(){
     driveTrainLeftMotorA = new WPI_TalonSRX(0);
