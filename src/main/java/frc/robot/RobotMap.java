@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.lib.LIDARLite;
+import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
   public static WPI_TalonSRX driveTrainLeftMotorA;
@@ -23,6 +24,7 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainRightMotorC;
   public static SpeedControllerGroup driveTrainRightMotors;
   public static DifferentialDrive driveTrainDifferentialDrive;
+  public static Compressor compressor;
 
   public static DigitalInput lidarPort;
   public static LIDARLite lidar;
@@ -45,5 +47,6 @@ public class RobotMap {
 
     lidarPort = new DigitalInput(0);
     lidar = new LIDARLite(lidarPort);
+    compressor = new Compressor(0);
   }
 }
