@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib.LIDARLite;
@@ -62,7 +63,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("LimelightArea", area);
     SmartDashboard.putNumber("Lidar Distance", lidarDistance);
-
+    SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.gyro.isConnected());
+    SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.gyro.isCalibrating());
+    SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.gyro.getYaw());
+    SmartDashboard.putNumber(   "IMU_Pitch",            RobotMap.gyro.getPitch());
+    SmartDashboard.putNumber(   "IMU_Roll",             RobotMap.gyro.getRoll());
   }
 
   /**

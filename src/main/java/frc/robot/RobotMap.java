@@ -9,7 +9,9 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.lib.LIDARLite;
 import edu.wpi.first.wpilibj.Compressor;
@@ -25,6 +27,8 @@ public class RobotMap {
   public static SpeedControllerGroup driveTrainRightMotors;
   public static DifferentialDrive driveTrainDifferentialDrive;
 
+  //public static ADXRS450_Gyro gyro;
+  public static AHRS gyro;
   public static DigitalInput lidarPort;
   public static LIDARLite lidar;
   public static Compressor compressor;
@@ -48,5 +52,6 @@ public class RobotMap {
     lidarPort = new DigitalInput(0);
     lidar = new LIDARLite(lidarPort);
     compressor = new Compressor(0);
+    gyro = new AHRS(SPI.Port.kMXP);
   }
 }
