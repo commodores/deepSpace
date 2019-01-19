@@ -12,11 +12,20 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 //import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SolenoidBase;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.lib.LIDARLite;
 import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
+  public static DoubleSolenoid legODoubleSolenoid;
+  public static DoubleSolenoid legTwoDoubleSolenoid;
+  public static Solenoid solenoidHatcher;
+  public static Solenoid solenoidExtender;
+
+  public static SolenoidBase sBase;
   public static WPI_TalonSRX driveTrainLeftMotorA;
   public static WPI_TalonSRX driveTrainLeftMotorB;
   public static WPI_TalonSRX driveTrainLeftMotorC;
@@ -34,6 +43,13 @@ public class RobotMap {
   public static Compressor compressor;
 
   public static void init(){
+
+    legODoubleSolenoid = new DoubleSolenoid(1, 2);
+    legTwoDoubleSolenoid = new DoubleSolenoid(3, 4);
+    solenoidExtender = new Solenoid(5);
+    solenoidHatcher = new Solenoid(6);
+
+
     driveTrainLeftMotorA = new WPI_TalonSRX(0);
     driveTrainLeftMotorB = new WPI_TalonSRX(1);
     driveTrainLeftMotorC = new WPI_TalonSRX(2);
