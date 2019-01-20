@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib.LIDARLite;
 import frc.robot.commands.*;
 import frc.robot.subsystems.driveTrain;
+import frc.robot.subsystems.climber;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -29,6 +30,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  */
 public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
+  public static climber climber;
   public static OI oi;
 
   Command m_autonomousCommand;
@@ -41,10 +43,14 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     RobotMap.init();
+    
     driveTrain = new driveTrain();
+    climber = new climber();
     oi = new OI();
-    m_chooser.addDefault("Default Auto", new driveFwdAuto());
+    
+    m_chooser.setDefaultOption("Default Auto", new driveFwdAuto());
     // chooser.addObject("My Auto", new MyAutoCommand());
+    
     SmartDashboard.putData("Auto mode", m_chooser);
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");

@@ -20,12 +20,12 @@ import frc.lib.LIDARLite;
 import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
-  public static DoubleSolenoid legODoubleSolenoid;
-  public static DoubleSolenoid legTwoDoubleSolenoid;
+  public static DoubleSolenoid frontLegSolenoid;
+  public static DoubleSolenoid rearLegSolenoid;
   public static Solenoid solenoidHatcher;
   public static Solenoid solenoidExtender;
-
   public static SolenoidBase sBase;
+  
   public static WPI_TalonSRX driveTrainLeftMotorA;
   public static WPI_TalonSRX driveTrainLeftMotorB;
   public static WPI_TalonSRX driveTrainLeftMotorC;
@@ -44,10 +44,10 @@ public class RobotMap {
 
   public static void init(){
 
-    legODoubleSolenoid = new DoubleSolenoid(1, 2);
-    legTwoDoubleSolenoid = new DoubleSolenoid(3, 4);
-    solenoidExtender = new Solenoid(5);
-    solenoidHatcher = new Solenoid(6);
+    frontLegSolenoid = new DoubleSolenoid(0, 1);
+    rearLegSolenoid = new DoubleSolenoid(2, 3);
+    solenoidExtender = new Solenoid(4);
+    solenoidHatcher = new Solenoid(5);
 
 
     driveTrainLeftMotorA = new WPI_TalonSRX(0);
