@@ -17,6 +17,7 @@ import frc.lib.LIDARLite;
 import frc.robot.commands.*;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.climber;
+import frc.robot.subsystems.climberMotors;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -31,6 +32,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static climber climber;
+  public static climberMotors climberMotors;
   public static OI oi;
 
   Command m_autonomousCommand;
@@ -53,10 +55,12 @@ public class Robot extends TimedRobot {
     
     SmartDashboard.putData("Auto mode", m_chooser);
 
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDouble(0);
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
+
 
     //read values periodically
     double x = tx.getDouble(0.0);

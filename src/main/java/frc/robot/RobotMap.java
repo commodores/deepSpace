@@ -26,6 +26,8 @@ public class RobotMap {
   public static Solenoid solenoidExtender;
   public static SolenoidBase sBase;
   
+  public static WPI_TalonSRX frontLegMotor;
+  public static WPI_TalonSRX rearLegMotor;
   public static WPI_TalonSRX driveTrainLeftMotorA;
   public static WPI_TalonSRX driveTrainLeftMotorB;
   public static WPI_TalonSRX driveTrainLeftMotorC;
@@ -49,7 +51,9 @@ public class RobotMap {
     solenoidExtender = new Solenoid(4);
     solenoidHatcher = new Solenoid(5);
 
-
+    frontLegMotor = new WPI_TalonSRX(6);
+    rearLegMotor = new WPI_TalonSRX(7);
+    
     driveTrainLeftMotorA = new WPI_TalonSRX(0);
     driveTrainLeftMotorB = new WPI_TalonSRX(1);
     driveTrainLeftMotorC = new WPI_TalonSRX(2);
