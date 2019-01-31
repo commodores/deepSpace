@@ -15,12 +15,33 @@ import edu.wpi.first.wpilibj.Solenoid;
  * Add your docs here.
  */
 public class hatcher extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  private final Solenoid solenoidHatcher = RobotMap.solenoidHatcher;
+  private final Solenoid solenoidExtender = RobotMap.solenoidExtender;
+  
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+  //public void extendHatcher(){
+   // solenoidHatcher.set(Solenoid.value.);
+   // rearLegSolenoid.set(DoubleSolenoid.Value.kForward);
+  //}
+
+  //public void retractFrontLifter(){
+  //  frontLegSolenoid.set(DoubleSolenoid.Value.kReverse);
+  //}
+
+  //public void retractRearLifter(){
+  //  rearLegSolenoid.set(DoubleSolenoid.Value.kReverse);
+  //}
+
+  //public void stopFrontLifters(){
+  //  frontLegSolenoid.set(DoubleSolenoid.Value.kOff);
+  //}
+
+  //public void stopRearLifters(){
+   // rearLegSolenoid.set(DoubleSolenoid.Value.kOff);
+  //}
 }
