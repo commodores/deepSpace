@@ -21,7 +21,6 @@ import frc.robot.subsystems.climberMotors;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import frc.robot.subsystems.myLimeLight;
 import edu.wpi.first.wpilibj.DriverStation;
 
 
@@ -36,7 +35,6 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static climber climber;
   public static climberMotors climberMotors;
-  public static myLimeLight mylimelight;
   public static OI oi;
 
   Command m_autonomousCommand;
@@ -52,7 +50,6 @@ public class Robot extends TimedRobot {
     
     driveTrain = new driveTrain();
     climber = new climber();
-    mylimelight = new myLimeLight();
     oi = new OI();
     
     m_chooser.setDefaultOption("Default Auto", new driveFwdAuto());
