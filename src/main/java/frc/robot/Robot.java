@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import frc.robot.subsystems.myLimeLight;
 import frc.lib.LIDARLite;
 import frc.robot.commands.*;
 import frc.robot.subsystems.driveTrain;
@@ -35,7 +36,9 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static climber climber;
   public static climberMotors climberMotors;
+  //public static myLimeLight myLimeLight;
   public static OI oi;
+    
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -51,6 +54,7 @@ public class Robot extends TimedRobot {
     driveTrain = new driveTrain();
     climber = new climber();
     oi = new OI();
+    //mylimelight = new myLimeLight();
     
     m_chooser.setDefaultOption("Default Auto", new driveFwdAuto());
     // chooser.addObject("My Auto", new MyAutoCommand());
@@ -58,6 +62,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
 
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDouble(0);
+    //NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").setNumber(<value>);
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");

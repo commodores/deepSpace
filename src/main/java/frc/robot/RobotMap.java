@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.lib.LIDARLite;
 import edu.wpi.first.wpilibj.Compressor;
+//import edu.wpi.first.wpilibj.myLimeLight;
 
 public class RobotMap {
   public static DoubleSolenoid frontLegSolenoid;
@@ -45,6 +46,7 @@ public class RobotMap {
   public static DigitalInput lidarPort;
   public static LIDARLite lidar;
   public static Compressor compressor;
+  //public static myLimeLight myLimeLight;
 
   public static void init(){
 
