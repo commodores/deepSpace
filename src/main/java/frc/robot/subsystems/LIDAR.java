@@ -8,17 +8,25 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.lib.LIDARLite;
 
 /**
  * Add your docs here.
  */
 public class LIDAR extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  LIDARLite lidar;
+	
+	public LIDAR() {
+		lidar = new LIDARLite(0);
+	}
+	
+	public double getDistance() {
+		return lidar.getDistanceIn(true);
+	}
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		//setDefaultCommand(new MySpecialCommand());
+	
+	}
 }

@@ -19,15 +19,13 @@ import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
   //driveTrain devices
-  public static WPI_TalonSRX driveTrainLeftMotorA;
-  public static WPI_TalonSRX driveTrainLeftMotorB;
-  public static WPI_TalonSRX driveTrainLeftMotorC;
-  public static SpeedControllerGroup driveTrainLeftMotors;
-  public static WPI_TalonSRX driveTrainRightMotorA;
-  public static WPI_TalonSRX driveTrainRightMotorB;
-  public static WPI_TalonSRX driveTrainRightMotorC;
-  public static SpeedControllerGroup driveTrainRightMotors;
-  public static DifferentialDrive driveTrainDifferentialDrive;
+  public static WPI_TalonSRX driveTrainLeftMaster;
+  public static WPI_TalonSRX driveTrainLeftSlave1;
+  public static WPI_TalonSRX driveTrainLeftSlave2;
+
+  public static WPI_TalonSRX driveTrainRightMaster;
+  public static WPI_TalonSRX driveTrainRightSlave1;
+  public static WPI_TalonSRX driveTrainRightSlave2;
   
   public static DoubleSolenoid motorShifter;
   
@@ -42,27 +40,18 @@ public class RobotMap {
   public static Solenoid solenoidExtender;
 
   //sensors and misc devices
-  public static AHRS gyro;
-  public static LIDARLite lidar;
   public static Compressor compressor;
 
   public static void init(){
 
     //driveTrain device initialization
-    driveTrainLeftMotorA = new WPI_TalonSRX(0);
-    driveTrainLeftMotorB = new WPI_TalonSRX(1);
-    driveTrainLeftMotorC = new WPI_TalonSRX(2);
-    driveTrainLeftMotors = new SpeedControllerGroup(driveTrainLeftMotorA, driveTrainLeftMotorB, driveTrainLeftMotorC);
+    driveTrainLeftMaster = new WPI_TalonSRX(0);
+    driveTrainLeftSlave1 = new WPI_TalonSRX(1);
+    driveTrainLeftSlave2 = new WPI_TalonSRX(2);
 
-    driveTrainRightMotorA = new WPI_TalonSRX(3);
-    driveTrainRightMotorB = new WPI_TalonSRX(4);
-    driveTrainRightMotorC = new WPI_TalonSRX(5);
-    driveTrainRightMotors = new SpeedControllerGroup(driveTrainRightMotorA, driveTrainRightMotorB, driveTrainRightMotorC);
-
-    driveTrainDifferentialDrive = new DifferentialDrive(driveTrainLeftMotors, driveTrainRightMotors);
-      driveTrainDifferentialDrive.setSafetyEnabled(false);
-      driveTrainDifferentialDrive.setExpiration(0.1);
-      driveTrainDifferentialDrive.setMaxOutput(1.0);
+    driveTrainRightMaster = new WPI_TalonSRX(3);
+    driveTrainRightSlave1 = new WPI_TalonSRX(4);
+    driveTrainRightSlave2 = new WPI_TalonSRX(5);
 
     motorShifter = new DoubleSolenoid(0, 1);
 
@@ -77,9 +66,7 @@ public class RobotMap {
     solenoidHatcher = new Solenoid(6);
     solenoidExtender = new Solenoid(7);
     
-    //sensors and misc device initialization    
-    gyro = new AHRS(SPI.Port.kMXP);
-    lidar = new LIDARLite(0);
+    //sensors and misc device initialization
     compressor = new Compressor(0);
   }
 }

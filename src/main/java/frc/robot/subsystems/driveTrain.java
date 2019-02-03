@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import com.ctre.phoenix.motion.TrajectoryPoint;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 /**
  * Add your docs here.
@@ -25,17 +27,34 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final WPI_TalonSRX leftMotorA = RobotMap.driveTrainLeftMotorA;
-  private final WPI_TalonSRX leftMotorB = RobotMap.driveTrainLeftMotorB;
-  private final WPI_TalonSRX leftMotorC = RobotMap.driveTrainLeftMotorC;
-  private final SpeedControllerGroup leftMotors = RobotMap.driveTrainLeftMotors;
-  private final WPI_TalonSRX rightMotorA = RobotMap.driveTrainRightMotorA;
-  private final WPI_TalonSRX rightMotorB = RobotMap.driveTrainRightMotorB;
-  private final WPI_TalonSRX rightMotorC = RobotMap.driveTrainRightMotorC;
-  private final SpeedControllerGroup rightMotors = RobotMap.driveTrainRightMotors;
-  private final DifferentialDrive differentialDrive = RobotMap.driveTrainDifferentialDrive;
+  private final WPI_TalonSRX leftMaster = RobotMap.driveTrainLeftMaster;
+  private final WPI_TalonSRX leftSlave1 = RobotMap.driveTrainLeftSlave1;
+  private final WPI_TalonSRX leftSlave2 = RobotMap.driveTrainLeftSlave2;
+
+  private final WPI_TalonSRX rightMaster = RobotMap.driveTrainRightMaster;
+  private final WPI_TalonSRX rightSlave1 = RobotMap.driveTrainRightSlave1;
+  private final WPI_TalonSRX rightSlave2 = RobotMap.driveTrainRightSlave2;
 
   private final DoubleSolenoid motorShifter = RobotMap.motorShifter;
+
+  double lastFeet_r = 0;
+	double lastTime = 0;
+	double lastVelocity_r = 0;
+	double lastAcceleration_r = 0;
+	double lastFeet_l = 0;
+	double lastVelocity_l = 0;
+  double lastAcceleration_l = 0;
+  
+  public DriveTrain() {
+      rightMaster.setInverted(true);
+      rightSlave1.setInverted(true);
+      rightSlave2.setInverted(true);
+      leftSlave1.follow(leftMaster);
+      leftSlave2.follow(leftMaster);
+      rightSlave1.follow(rightMaster);
+      rightSlave2.follow(rightMaster);
+      //leftEncoder.setReverseDirection(true);
+    }
 
   @Override
   public void initDefaultCommand() {
@@ -44,11 +63,24 @@ public class DriveTrain extends Subsystem {
   }
 
   public void drive(double speed, double rotation) {
-    differentialDrive.arcadeDrive(speed, rotation);
+    setSpeed(-speed+rotation, -speed-rotation);
+  }
+
+  public void setSpeed(double leftSpeed, double rightSpeed) {
+		setSpeedLeft(leftSpeed);
+		setSpeedRight(rightSpeed);
   }
   
+  public void setSpeedLeft(double leftSpeed) {
+		leftMaster.set(ControlMode.PercentOutput, leftSpeed);
+	}
+	
+	public void setSpeedRight(double rightSpeed) {
+		 rightMaster.set(ControlMode.PercentOutput, rightSpeed);
+	}
+  
   public void stop() {
-    differentialDrive.stopMotor();
+    setSpeed(0, 0);
   }
   public void highGear(){
     motorShifter.set(DoubleSolenoid.Value.kForward);
@@ -61,4 +93,5 @@ public class DriveTrain extends Subsystem {
   public void turnOffSolenoids(){
     motorShifter.set(DoubleSolenoid.Value.kOff);
   }
+
 }

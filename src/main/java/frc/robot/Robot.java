@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   public static Hatcher m_hatcher;
   public static LimeLight m_limelight;
   public static IMU m_gyro;
+  public static LIDAR m_lidar;
   public static OI m_oi;
     
 
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     m_gyro = new IMU();
     m_limelight = new LimeLight();
+    m_lidar = new LIDAR();
     
     m_chooser.setDefaultOption("Default Auto", new DecendHab2());
     //m_chooser.addObject("My Auto", new MyAutoCommand());
@@ -72,9 +74,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Limelight Distance", m_limelight.getDistance());
     SmartDashboard.putNumber("Angle", m_limelight.getAngle());
 
-    double lidarDistance = RobotMap.lidar.getDistanceIn(true);
-
-    SmartDashboard.putNumber("Lidar Distance", lidarDistance);
+    SmartDashboard.putNumber("Lidar Distance", m_lidar.getDistance());
     
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
   }
