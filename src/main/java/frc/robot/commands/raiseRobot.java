@@ -14,13 +14,13 @@ public class raiseRobot extends Command {
   public raiseRobot() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.climber);
+    requires(Robot.m_climber);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.climber.extendLifters();
+    Robot.m_climber.extendLifters();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,8 +37,8 @@ public class raiseRobot extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climber.stopFrontLifters();
-    Robot.climber.stopRearLifters();
+    Robot.m_climber.stopFrontLifters();
+    Robot.m_climber.stopRearLifters();
   }
 
   // Called when another command which requires one or more of the same

@@ -25,8 +25,6 @@ public class driveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final DoubleSolenoid driveLeftMotors = RobotMap.driveLeftMotors;
-  private final DoubleSolenoid driveRightMotors = RobotMap.driveRightMotors;
   private final WPI_TalonSRX leftMotorA = RobotMap.driveTrainLeftMotorA;
   private final WPI_TalonSRX leftMotorB = RobotMap.driveTrainLeftMotorB;
   private final WPI_TalonSRX leftMotorC = RobotMap.driveTrainLeftMotorC;
@@ -36,6 +34,8 @@ public class driveTrain extends Subsystem {
   private final WPI_TalonSRX rightMotorC = RobotMap.driveTrainRightMotorC;
   private final SpeedControllerGroup rightMotors = RobotMap.driveTrainRightMotors;
   private final DifferentialDrive differentialDrive = RobotMap.driveTrainDifferentialDrive;
+
+  private final DoubleSolenoid motorShifter = RobotMap.motorShifter;
 
   @Override
   public void initDefaultCommand() {
@@ -50,24 +50,15 @@ public class driveTrain extends Subsystem {
   public void stop() {
     differentialDrive.stopMotor();
   }
-  public void highGearBothMotors(){
-    driveLeftMotors.set(DoubleSolenoid.Value.kForward);
-    driveRightMotors.set(DoubleSolenoid.Value.kForward);
+  public void highGear(){
+    motorShifter.set(DoubleSolenoid.Value.kForward);
   }
 
-  public void lowGearLeftMotors(){
-    driveLeftMotors.set(DoubleSolenoid.Value.kReverse);
+  public void lowGear(){
+    motorShifter.set(DoubleSolenoid.Value.kReverse);
   }
 
-  public void lowGearRightMotors(){
-    driveRightMotors.set(DoubleSolenoid.Value.kReverse);
-  }
-
-  public void stopDriveLeftMotors(){
-    driveLeftMotors.set(DoubleSolenoid.Value.kOff);
-  }
-
-  public void stopDriveRightMotors(){
-    driveRightMotors.set(DoubleSolenoid.Value.kOff);
+  public void turnOffSolenoids(){
+    motorShifter.set(DoubleSolenoid.Value.kOff);
   }
 }

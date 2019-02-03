@@ -24,23 +24,19 @@ public class hatcher extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public void extendFoward(){
+  public void extendHatcher(){
     solenoidExtender.set(true);
   }
 
-  public void extendHatcher(){
-    solenoidHatcher.set(true);
-  }
-
-  public void extendBackward(){
+  public void retractHatcher(){
     solenoidExtender.set(false);
   }
 
-  public void retractHatcher(){
-    solenoidHatcher.set(false);
+  public void gripHatch(){
+    solenoidHatcher.set(true);
   }
 
-  //public void stopRearLifters(){
-   // rearLegSolenoid.set(DoubleSolenoid.Value.kOff);
-  //}
+  public void releaseHatch(){
+    solenoidHatcher.set(false);
+  }
 }

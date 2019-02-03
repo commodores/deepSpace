@@ -14,7 +14,7 @@ public class driveManual extends Command {
   public driveManual() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.driveTrain);
+    requires(Robot.m_driveTrain);
   }
 
   // Called just before this Command runs the first time
@@ -25,18 +25,13 @@ public class driveManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
     double speed;
     double rotation;
     
-    speed = Robot.oi.getJoystick1().getRawAxis(1);
-    //if (Robot.oi.getJoystick1().getRawAxis(0) < 0) {
-    //  rotation = -(Robot.oi.getJoystick1().getRawAxis(0)*2)+.25;
-    //} else {
-    //  rotation = -(Robot.oi.getJoystick1().getRawAxis(0)*2)-.25;
-    //}
-    rotation = -(Robot.oi.getJoystick1().getRawAxis(2)*.75);	
-    Robot.driveTrain.drive(speed, rotation);
+    speed = Robot.m_oi.getJoystick1().getRawAxis(1);
+    
+    rotation = -(Robot.m_oi.getJoystick1().getRawAxis(2)*.75);	
+    Robot.m_driveTrain.drive(speed, rotation);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -48,7 +43,7 @@ public class driveManual extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveTrain.stop();
+    Robot.m_driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same

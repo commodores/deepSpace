@@ -13,12 +13,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import frc.robot.subsystems.myLimeLight;
 import frc.lib.LIDARLite;
 import frc.robot.commands.*;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.climber;
-import frc.robot.subsystems.climberMotors;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -33,11 +31,11 @@ import edu.wpi.first.wpilibj.DriverStation;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static driveTrain driveTrain;
-  public static climber climber;
-  public static climberMotors climberMotors;
+  public static driveTrain m_driveTrain;
+  public static climber m_climber;
+
   //public static myLimeLight myLimeLight;
-  public static OI oi;
+  public static OI m_oi;
     
 
   Command m_autonomousCommand;
@@ -51,29 +49,26 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     
-    driveTrain = new driveTrain();
-    climber = new climber();
-    oi = new OI();
-    //mylimelight = new myLimeLight();
+    m_driveTrain = new driveTrain();
+    m_climber = new climber();
+    m_oi = new OI();
     
-    m_chooser.setDefaultOption("Default Auto", new driveFwdAuto());
-    // chooser.addObject("My Auto", new MyAutoCommand());
+    m_chooser.setDefaultOption("Default Auto", new decendHab2());
+    //m_chooser.addObject("My Auto", new MyAutoCommand());
     
     SmartDashboard.putData("Auto mode", m_chooser);
 
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDouble(0);
-    //NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").setNumber(<value>);
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
 
-
     //read values periodically
     double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
     double area = ta.getDouble(0.0);
-    double lidarDistance = RobotMap.lidar.getDistance();
+    double lidarDistance = RobotMap.lidar.getDistanceIn(true);
 
     //post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
