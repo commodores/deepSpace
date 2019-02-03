@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class climberFwdAuto extends Command {
-  public climberFwdAuto() {
+public class ClimberFwdAuto extends Command {
+  public ClimberFwdAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_climber);

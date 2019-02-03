@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class climbHab3 extends CommandGroup {
+public class ClimbHab3 extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public climbHab3() {
+  public ClimbHab3() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

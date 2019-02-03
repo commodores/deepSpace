@@ -10,17 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.lib.LIDARLite;
-import frc.robot.commands.*;
-import frc.robot.subsystems.driveTrain;
-import frc.robot.subsystems.climber;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj.DriverStation;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 
 /**
@@ -31,10 +24,11 @@ import edu.wpi.first.wpilibj.DriverStation;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static driveTrain m_driveTrain;
-  public static climber m_climber;
-
-  //public static myLimeLight myLimeLight;
+  public static DriveTrain m_driveTrain;
+  public static Climber m_climber;
+  public static Hatcher m_hatcher;
+  public static LimeLight m_limelight;
+  public static IMU m_gyro;
   public static OI m_oi;
     
 
@@ -49,37 +43,17 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     
-    m_driveTrain = new driveTrain();
-    m_climber = new climber();
+    m_driveTrain = new DriveTrain();
+    m_climber = new Climber();
+    m_hatcher = new Hatcher();
     m_oi = new OI();
+    m_gyro = new IMU();
+    m_limelight = new LimeLight();
     
-    m_chooser.setDefaultOption("Default Auto", new decendHab2());
+    m_chooser.setDefaultOption("Default Auto", new DecendHab2());
     //m_chooser.addObject("My Auto", new MyAutoCommand());
     
-    SmartDashboard.putData("Auto mode", m_chooser);
-
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDouble(0);
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    NetworkTableEntry tx = table.getEntry("tx");
-    NetworkTableEntry ty = table.getEntry("ty");
-    NetworkTableEntry ta = table.getEntry("ta");
-
-    //read values periodically
-    double x = tx.getDouble(0.0);
-    double y = ty.getDouble(0.0);
-    double area = ta.getDouble(0.0);
-    double lidarDistance = RobotMap.lidar.getDistanceIn(true);
-
-    //post to smart dashboard periodically
-    SmartDashboard.putNumber("LimelightX", x);
-    SmartDashboard.putNumber("LimelightY", y);
-    SmartDashboard.putNumber("LimelightArea", area);
-    SmartDashboard.putNumber("Lidar Distance", lidarDistance);
-    SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.gyro.isConnected());
-    SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.gyro.isCalibrating());
-    SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.gyro.getYaw());
-    SmartDashboard.putNumber(   "IMU_Pitch",            RobotMap.gyro.getPitch());
-    SmartDashboard.putNumber(   "IMU_Roll",             RobotMap.gyro.getRoll());
+    SmartDashboard.putData("Auto mode", m_chooser);    
   }
 
   /**
@@ -92,6 +66,17 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("tx", m_limelight.getX());
+    SmartDashboard.putNumber("ty", m_limelight.getY());
+    SmartDashboard.putBoolean("tv", m_limelight.targetExists());
+    SmartDashboard.putNumber("Limelight Distance", m_limelight.getDistance());
+    SmartDashboard.putNumber("Angle", m_limelight.getAngle());
+
+    double lidarDistance = RobotMap.lidar.getDistanceIn(true);
+
+    SmartDashboard.putNumber("Lidar Distance", lidarDistance);
+    
+    SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
   }
 
   /**

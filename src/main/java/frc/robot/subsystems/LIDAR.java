@@ -8,35 +8,17 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  * Add your docs here.
  */
-public class Hatcher extends Subsystem {
-  private final Solenoid solenoidHatcher = RobotMap.solenoidHatcher;
-  private final Solenoid solenoidExtender = RobotMap.solenoidExtender;
-  
+public class LIDAR extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-  }
-  public void extendHatcher(){
-    solenoidExtender.set(true);
-  }
-
-  public void retractHatcher(){
-    solenoidExtender.set(false);
-  }
-
-  public void gripHatch(){
-    solenoidHatcher.set(true);
-  }
-
-  public void releaseHatch(){
-    solenoidHatcher.set(false);
   }
 }

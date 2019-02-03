@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class DecendHab2 extends CommandGroup {
+public class RetrieveHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public DecendHab2() {
+  public RetrieveHatch() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

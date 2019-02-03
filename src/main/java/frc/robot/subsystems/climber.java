@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 /**
  * Add your docs here.
  */
-public class climber extends Subsystem {
+public class Climber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final DoubleSolenoid frontLegSolenoid = RobotMap.frontLegSolenoid;

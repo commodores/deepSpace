@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
-import frc.robot.commands.driveManual;
+import frc.robot.commands.DriveManual;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 /**
  * Add your docs here.
  */
-public class driveTrain extends Subsystem {
+public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -40,7 +40,7 @@ public class driveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new driveManual());
+    setDefaultCommand(new DriveManual());
   }
 
   public void drive(double speed, double rotation) {
