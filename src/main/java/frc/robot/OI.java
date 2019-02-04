@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -15,13 +15,36 @@ public class OI {
   
 
   Joystick joy1 = new Joystick(0);
-  Joystick joy2 = new Joystick(1);
+  JoystickButton btn1 = new JoystickButton(joy1, 1);
+  JoystickButton btn2 = new JoystickButton(joy1, 2);
+  JoystickButton btn3 = new JoystickButton(joy1, 3);
+  JoystickButton btn4 = new JoystickButton(joy1, 4);
+  JoystickButton btn5 = new JoystickButton(joy1, 5);
+  JoystickButton btn6 = new JoystickButton(joy1, 6);
+  JoystickButton btn7 = new JoystickButton(joy1, 7);
+  JoystickButton btn8 = new JoystickButton(joy1, 8);
+  JoystickButton btn9 = new JoystickButton(joy1, 9);
+  JoystickButton btn10 = new JoystickButton(joy1, 10);
+  JoystickButton btn11 = new JoystickButton(joy1, 11);
+  JoystickButton btn12 = new JoystickButton(joy1, 12);
 
+  Joystick arcade = new Joystick(1);
+  JoystickButton arcadeBtn1 = new JoystickButton(arcade, 1);
+  JoystickButton arcadeBtn2 = new JoystickButton(arcade, 2);
+  JoystickButton arcadeBtn3 = new JoystickButton(arcade, 3);
+  JoystickButton arcadeBtn4 = new JoystickButton(arcade, 4);
+  JoystickButton arcadeBtn5 = new JoystickButton(arcade, 5);
+  JoystickButton arcadeBtn6 = new JoystickButton(arcade, 6);
+  JoystickButton arcadeBtn7 = new JoystickButton(arcade, 7);
+  JoystickButton arcadeBtn8 = new JoystickButton(arcade, 8);
+  JoystickButton arcadeBtn9 = new JoystickButton(arcade, 9);
   
   
   public OI() {
     joy1 = new Joystick(0);
-    joy2 = new Joystick(1);
+    arcade = new Joystick(1);
+
+    btn1.whenPressed(new ClimbHab3());
   }
 
   public Joystick getJoystick1() {
@@ -29,7 +52,7 @@ public class OI {
   }
 
   public Joystick getJoystick2() {
-    return joy2;
+    return arcade;
   }
 }
 
