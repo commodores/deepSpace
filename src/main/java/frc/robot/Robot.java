@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    DriverStation.reportWarning("Lime Light Test Getters Started", false);
+    
   }
 
   @Override
