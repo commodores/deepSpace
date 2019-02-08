@@ -24,21 +24,22 @@ public class ledBlinkinController extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    public void set {
-    	revBlinkin.set(.61);
-    }
-    
-    public void setGreen() {
-    	revBlinkin.set(.77);
-    }
-    
-    public void setRainbow() {
-    	revBlinkin.set(-0.97);
-    }
-    
-    public void set4C() {
-    	revBlinkin.set(.53);
-    }
-
   }
+
+  public void setBlue() {
+    revBlinkin.set(.61);
+  }
+  
+  public void setGreen() {
+    revBlinkin.set(.77);
+  }
+  
+  public void setRainbow() {
+    revBlinkin.set(-0.97);
+  }
+  
+  public void set4C() {
+    revBlinkin.set(.53);
+  }
+
 }
