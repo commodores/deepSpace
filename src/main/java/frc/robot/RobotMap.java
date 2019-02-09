@@ -24,7 +24,7 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainRightSlave1;
   public static WPI_TalonSRX driveTrainRightSlave2;
 
-  public static SpeedController  ledControllerrevBlinkin;
+  public static SpeedController ledControllerrevBlinkin;
   
   public static DoubleSolenoid motorShifter;
   
@@ -63,7 +63,7 @@ public class RobotMap {
     frontLegSolenoid = new DoubleSolenoid(2, 3);
     rearLegSolenoid = new DoubleSolenoid(4, 5);
 
-    frontLegMotor = new WPI_TalonSRX(6);
+    frontLegMotor = new WPI_TalonSRX(3);
     rearLegMotor = new WPI_TalonSRX(7);
     
     //gripper device initialization

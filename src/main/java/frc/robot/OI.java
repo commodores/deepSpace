@@ -47,8 +47,22 @@ public class OI {
     leftArcade = new Joystick(1);
     rightArcade = new Joystick(2);
 
+    btn1.whenPressed(new extendHatcher());
+    btn2.whenPressed(new retractHatcher());
     btn3.whenPressed(new LowGear());
-    btn4.whenPressed(new HighGear()); 
+    btn4.whenPressed(new HighGear());
+    btn5.whenPressed(new gripExtend());
+    btn6.whenPressed(new releaseHatch()); 
+
+    arcadeBtn1.whenPressed(new extendFrontLifter());
+    arcadeBtn2.whenPressed(new RaiseRobot());
+    arcadeBtn3.whenPressed(new extendRearLifter());
+    arcadeBtn4.whenPressed(new DropFrontRobot());
+    arcadeBtn5.whenPressed(new retractLegs());
+    arcadeBtn6.whenPressed(new DropRearRobot());
+    arcadeBtn7.whileHeld(new driveFwd());
+    arcadeBtn9.whileHeld(new driveBwd());
+
   }
 
   public Joystick getJoystick1() {

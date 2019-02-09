@@ -9,6 +9,9 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 
@@ -20,6 +23,8 @@ public class Climber extends Subsystem {
   // here. Call these from Commands.
   private final DoubleSolenoid frontLegSolenoid = RobotMap.frontLegSolenoid;
   private final DoubleSolenoid rearLegSolenoid = RobotMap.rearLegSolenoid;
+  private final WPI_TalonSRX frontLegMotor = RobotMap.frontLegMotor;
+  private final WPI_TalonSRX rearLegMotor = RobotMap.rearLegMotor;
 
 
   @Override
@@ -31,6 +36,12 @@ public class Climber extends Subsystem {
   
   public void extendLifters(){
     frontLegSolenoid.set(DoubleSolenoid.Value.kForward);
+    rearLegSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+  public void extendFrontLifter(){
+    frontLegSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+  public void extendRearLifter(){
     rearLegSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
@@ -49,5 +60,16 @@ public class Climber extends Subsystem {
   public void stopRearLifters(){
     rearLegSolenoid.set(DoubleSolenoid.Value.kOff);
   }
-  
+  public void driveFwd(){
+    frontLegMotor.set(-.25);
+    rearLegMotor.set(.25);
+  }
+  public void driveBwd(){
+    frontLegMotor.set(.25);
+    rearLegMotor.set(-.25);
+  }
+  public void stopDrive(){
+    frontLegMotor.set(0);
+    rearLegMotor.set(0);
+  }
 }
