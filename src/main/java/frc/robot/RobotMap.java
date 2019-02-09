@@ -48,9 +48,9 @@ public class RobotMap {
     driveTrainLeftSlave1 = new WPI_TalonSRX(1);
     driveTrainLeftSlave2 = new WPI_TalonSRX(2);
 
-    driveTrainRightMaster = new WPI_TalonSRX(3);
-    driveTrainRightSlave1 = new WPI_TalonSRX(4);
-    driveTrainRightSlave2 = new WPI_TalonSRX(5);
+    driveTrainRightMaster = new WPI_TalonSRX(4);
+    driveTrainRightSlave1 = new WPI_TalonSRX(5);
+    driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
     motorShifter = new DoubleSolenoid(0, 1);
 

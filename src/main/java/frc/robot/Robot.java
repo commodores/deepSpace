@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static IMU m_gyro;
   public static LIDAR m_lidar;
   public static OI m_oi;
+  public static MotorShifter m_motorShifter;
     
 
   Command m_autonomousCommand;
@@ -50,6 +51,7 @@ public class Robot extends TimedRobot {
     m_gyro = new IMU();
     m_limelight = new LimeLight();
     m_lidar = new LIDAR();
+    m_motorShifter = new MotorShifter();
     
     m_chooser.setDefaultOption("Default Auto", new DecendHab2());
     //m_chooser.addObject("My Auto", new MyAutoCommand());

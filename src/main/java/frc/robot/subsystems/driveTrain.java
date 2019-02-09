@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
   private final WPI_TalonSRX rightSlave1 = RobotMap.driveTrainRightSlave1;
   private final WPI_TalonSRX rightSlave2 = RobotMap.driveTrainRightSlave2;
 
-  private final DoubleSolenoid motorShifter = RobotMap.motorShifter;
+  
 
   double lastFeet_r = 0;
 	double lastTime = 0;
@@ -76,16 +76,6 @@ public class DriveTrain extends Subsystem {
   public void stop() {
     setSpeed(0, 0);
   }
-  public void highGear(){
-    motorShifter.set(DoubleSolenoid.Value.kForward);
-  }
-
-  public void lowGear(){
-    motorShifter.set(DoubleSolenoid.Value.kReverse);
-  }
-
-  public void turnOffSolenoids(){
-    motorShifter.set(DoubleSolenoid.Value.kOff);
-  }
+  
 
 }

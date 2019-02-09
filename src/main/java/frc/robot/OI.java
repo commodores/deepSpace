@@ -28,23 +28,27 @@ public class OI {
   JoystickButton btn11 = new JoystickButton(joy1, 11);
   JoystickButton btn12 = new JoystickButton(joy1, 12);
 
-  Joystick arcade = new Joystick(1);
-  JoystickButton arcadeBtn1 = new JoystickButton(arcade, 1);
-  JoystickButton arcadeBtn2 = new JoystickButton(arcade, 2);
-  JoystickButton arcadeBtn3 = new JoystickButton(arcade, 3);
-  JoystickButton arcadeBtn4 = new JoystickButton(arcade, 4);
-  JoystickButton arcadeBtn5 = new JoystickButton(arcade, 5);
-  JoystickButton arcadeBtn6 = new JoystickButton(arcade, 6);
-  JoystickButton arcadeBtn7 = new JoystickButton(arcade, 7);
-  JoystickButton arcadeBtn8 = new JoystickButton(arcade, 8);
-  JoystickButton arcadeBtn9 = new JoystickButton(arcade, 9);
+  Joystick leftArcade = new  Joystick(1);
+
+  Joystick rightArcade = new Joystick(2);
+  JoystickButton arcadeBtn1 = new JoystickButton(rightArcade, 1);
+  JoystickButton arcadeBtn2 = new JoystickButton(rightArcade, 2);
+  JoystickButton arcadeBtn3 = new JoystickButton(rightArcade, 3);
+  JoystickButton arcadeBtn4 = new JoystickButton(rightArcade, 4);
+  JoystickButton arcadeBtn5 = new JoystickButton(rightArcade, 5);
+  JoystickButton arcadeBtn6 = new JoystickButton(rightArcade, 6);
+  JoystickButton arcadeBtn7 = new JoystickButton(rightArcade, 7);
+  JoystickButton arcadeBtn8 = new JoystickButton(rightArcade, 8);
+  JoystickButton arcadeBtn9 = new JoystickButton(rightArcade, 9);
   
   
   public OI() {
     joy1 = new Joystick(0);
-    arcade = new Joystick(1);
+    leftArcade = new Joystick(1);
+    rightArcade = new Joystick(2);
 
-    btn1.whenPressed(new ClimbHab3());
+    btn3.whenPressed(new LowGear());
+    btn4.whenPressed(new HighGear()); 
   }
 
   public Joystick getJoystick1() {
@@ -52,7 +56,11 @@ public class OI {
   }
 
   public Joystick getJoystick2() {
-    return arcade;
+    return leftArcade;
+  }
+
+  public Joystick getJoystick3() {
+    return rightArcade;
   }
 }
 
