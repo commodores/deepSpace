@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 /**
  * Add your docs here.
@@ -21,6 +20,9 @@ public class MotorShifter extends Subsystem {
   // here. Call these from Commands.
   private final DoubleSolenoid motorShifter = RobotMap.motorShifter;
 
+  public MotorShifter() {
+    //test
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

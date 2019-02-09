@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class LowGear extends Command {
   public LowGear() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.m_motorShifter);
   }
 
