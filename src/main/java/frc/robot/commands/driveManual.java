@@ -29,8 +29,14 @@ public class DriveManual extends Command {
     double rotation;
     
     speed = Robot.m_oi.getJoystick1().getRawAxis(1);
-    
-    rotation = -(Robot.m_oi.getJoystick1().getRawAxis(2)*.75);	
+    rotation = -(Robot.m_oi.getJoystick1().getRawAxis(2)*.75);
+    if (speed > -0.2 && speed < 0.2) {
+      speed = 0;
+    }
+    if (rotation > -0.2 && rotation < 0.2) {
+      rotation = 0;
+    }
+        	
     Robot.m_driveTrain.drive(-speed, rotation);
   }
 

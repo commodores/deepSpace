@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class retractLegs extends Command {
-  public retractLegs() {
+public class RetractFrontLeg extends Command {
+  public RetractFrontLeg() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_climber);
@@ -21,7 +21,6 @@ public class retractLegs extends Command {
   @Override
   protected void initialize() {
     Robot.m_climber.retractFrontLifter();
-    Robot.m_climber.retractRearLifter();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,11 +37,13 @@ public class retractLegs extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_climber.stopFrontLifters();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

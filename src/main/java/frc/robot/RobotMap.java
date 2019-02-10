@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Spark;
 
 public class RobotMap {
@@ -24,7 +23,7 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainRightSlave1;
   public static WPI_TalonSRX driveTrainRightSlave2;
 
-  public static SpeedController ledControllerrevBlinkin;
+  public static SpeedController ledControllerRevBlinkin;
   
   public static DoubleSolenoid motorShifter;
   
@@ -55,9 +54,8 @@ public class RobotMap {
     motorShifter = new DoubleSolenoid(0, 1);
 
     //led device initialization
-    ledControllerrevBlinkin = new Spark(6);
-        LiveWindow.addActuator("ledController", "revBlinkin", (Spark) ledControllerrevBlinkin);
-        ledControllerrevBlinkin.setInverted(false);
+    ledControllerRevBlinkin = new Spark(6);
+        ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
     frontLegSolenoid = new DoubleSolenoid(2, 3);

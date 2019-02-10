@@ -10,17 +10,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DropFrontRobot extends Command {
-  public DropFrontRobot() {
+public class ExtendGripper extends Command {
+  public ExtendGripper() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_climber);
+    requires(Robot.m_hatcher);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_climber.retractFrontLifter();
+    Robot.m_hatcher.gripHatch();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,13 +37,11 @@ public class DropFrontRobot extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_climber.stopFrontLifters();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

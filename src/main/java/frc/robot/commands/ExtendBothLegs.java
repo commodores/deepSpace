@@ -10,17 +10,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class gripExtend extends Command {
-  public gripExtend() {
+public class ExtendBothLegs extends Command {
+  public ExtendBothLegs() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_hatcher);
+    requires(Robot.m_climber);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_hatcher.gripHatch();
+    Robot.m_climber.extendLifters();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,11 +37,14 @@ public class gripExtend extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_climber.stopFrontLifters();
+    Robot.m_climber.stopRearLifters();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

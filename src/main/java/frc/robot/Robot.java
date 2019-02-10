@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
   public static OI m_oi;
+  public static LedBlinkinController m_ledBlinkinController;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -50,6 +51,7 @@ public class Robot extends TimedRobot {
     m_limelight = new LimeLight();
     m_lidar = new LIDAR();
     m_motorShifter = new MotorShifter();
+    m_ledBlinkinController = new LedBlinkinController();
     m_oi = new OI();
     
     m_chooser.setDefaultOption("Default Auto", new DecendHab2());
@@ -77,6 +79,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Lidar Distance", m_lidar.getDistance());
     
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
+
+    SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
+    SmartDashboard.putNumber("Right Encoder Distance", m_driveTrain.getRightEncoderInches());
   }
 
   /**

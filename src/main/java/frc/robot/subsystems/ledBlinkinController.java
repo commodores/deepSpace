@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -15,10 +14,10 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class ledBlinkinController extends Subsystem {
+public class LedBlinkinController extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final SpeedController revBlinkin = RobotMap.ledControllerrevBlinkin;
+  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
 
   @Override
   public void initDefaultCommand() {
