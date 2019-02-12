@@ -25,7 +25,7 @@ public class DriveManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double speed;
+    /*double speed;
     double rotation;
     
     speed = Robot.m_oi.getJoystick1().getRawAxis(1);
@@ -38,6 +38,8 @@ public class DriveManual extends Command {
     }
         	
     Robot.m_driveTrain.drive(-speed, rotation);
+    */
+    Robot.m_driveTrain.driveTank(Robot.m_oi.getJoystick1().getRawAxis(1), Robot.m_oi.getJoystick1().getRawAxis(5));
   }
 
   // Make this return true when this Command no longer needs to run execute()

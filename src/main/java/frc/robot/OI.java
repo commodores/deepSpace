@@ -54,14 +54,14 @@ public class OI {
     btn5.whenPressed(new ExtendGripper());
     btn6.whenPressed(new RetractGripper()); 
 
-    arcadeBtn1.whenPressed(new ExtendFrontLeg());
-    arcadeBtn2.whenPressed(new ExtendBothLegs());
-    arcadeBtn3.whenPressed(new ExtendRearLeg());
-    arcadeBtn4.whenPressed(new RetractFrontLeg());
-    arcadeBtn5.whenPressed(new RetractBothLegs());
-    arcadeBtn6.whenPressed(new RetractRearLeg());
-    arcadeBtn7.whileHeld(new LegsDriveForward());
-    arcadeBtn9.whileHeld(new LegsDriveReverse());
+    //arcadeBtn1.whenPressed(new ExtendFrontLeg());
+    //arcadeBtn2.whenPressed(new ExtendBothLegs());
+    //arcadeBtn3.whenPressed(new ExtendRearLeg());
+    //arcadeBtn4.whenPressed(new RetractFrontLeg());
+    //arcadeBtn5.whenPressed(new RetractBothLegs());
+    //arcadeBtn6.whenPressed(new RetractRearLeg());
+    //arcadeBtn7.whileHeld(new LegsDriveForward());
+    //arcadeBtn9.whileHeld(new LegsDriveReverse());
 
   }
 

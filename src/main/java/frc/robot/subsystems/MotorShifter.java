@@ -27,7 +27,7 @@ public class MotorShifter extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new LowGear());
+  
   }
   public void highGear(){
     motorShifter.set(DoubleSolenoid.Value.kForward);

@@ -9,9 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 
@@ -26,6 +25,11 @@ public class Climber extends Subsystem {
   private final WPI_TalonSRX frontLegMotor = RobotMap.frontLegMotor;
   private final WPI_TalonSRX rearLegMotor = RobotMap.rearLegMotor;
 
+  
+
+  public Climber(){
+    frontLegMotor.setNeutralMode(NeutralMode.Brake);
+  }
 
   @Override
   public void initDefaultCommand() {

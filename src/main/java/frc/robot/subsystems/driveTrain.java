@@ -64,8 +64,8 @@ public class DriveTrain extends Subsystem {
     rightMaster.setSensorPhase(true);
     leftMaster.setSensorPhase(true);
 
-    rightMaster.configOpenloopRamp(5.0);
-    leftMaster.configOpenloopRamp(5.0);
+    rightMaster.configOpenloopRamp(.5);
+    leftMaster.configOpenloopRamp(.5);
 
     leftSlave1.follow(leftMaster);
     leftSlave2.follow(leftMaster);
@@ -86,6 +86,9 @@ public class DriveTrain extends Subsystem {
     setDefaultCommand(new DriveManual());
   }
 
+  public void driveTank(double left, double right){
+    setSpeed(left, right);
+  }
   public void drive(double speed, double rotation) {
     setSpeed(-speed+rotation, -speed-rotation);
   }
