@@ -13,12 +13,14 @@ import frc.robot.Robot;
 public class HighGear extends Command {
   public HighGear() {
     requires(Robot.m_motorShifter);
+    requires(Robot.m_ledBlinkinController);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     Robot.m_motorShifter.highGear();
+    Robot.m_ledBlinkinController.setBlue();
   }
 
   // Called repeatedly when this Command is scheduled to run

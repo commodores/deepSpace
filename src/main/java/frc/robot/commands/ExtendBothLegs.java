@@ -15,12 +15,14 @@ public class ExtendBothLegs extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_climber);
+    requires(Robot.m_ledBlinkinController);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     Robot.m_climber.extendLifters();
+    Robot.m_ledBlinkinController.setRed();
   }
 
   // Called repeatedly when this Command is scheduled to run

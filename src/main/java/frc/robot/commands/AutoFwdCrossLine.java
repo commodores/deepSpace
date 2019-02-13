@@ -9,42 +9,53 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.*;
+import frc.robot.RobotMap;
 
-public class RetractBothLegs extends Command {
-  public RetractBothLegs() {
+public class AutoFwdCrossLine extends Command {
+  public AutoFwdCrossLine() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_climber);
+    setTimeout(10.0);
+    requires(Robot.m_gyro);
     requires(Robot.m_ledBlinkinController);
+    requires(Robot.m_limelight);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_climber.retractFrontLifter();
-    Robot.m_climber.retractRearLifter();
-    Robot.m_ledBlinkinController.setBlue();
+    //Reset Sensors
+    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetEncoders();
+    Robot.m_ledBlinkinController.set4C();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    Robot.m_driveTrain.setSpeed(.8 + pTerm, .8 -pTerm);
+    System.out.println("Gyro: " + Robot.m_gyro.getYaw());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.m_driveTrain.getRightEncoderInches() > 98 || isTimedOut();
+    //return Robot.m_driveTrain.getLeftEncoderInches() > 98 || isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

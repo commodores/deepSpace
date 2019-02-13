@@ -10,6 +10,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SpeedController;
+
 
 /**
  * Add your docs here.
@@ -17,6 +19,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class Hatcher extends Subsystem {
   private final Solenoid solenoidHatcher = RobotMap.solenoidHatcher;
   private final Solenoid solenoidExtender = RobotMap.solenoidExtender;
+  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
   
 
   @Override
@@ -26,6 +29,7 @@ public class Hatcher extends Subsystem {
   }
   public void extendHatcher(){
     solenoidExtender.set(true);
+    
   }
 
   public void retractHatcher(){

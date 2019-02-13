@@ -41,4 +41,15 @@ public class LedBlinkinController extends Subsystem {
     revBlinkin.set(.53);
   }
 
+  public void setColorWaves(){
+    revBlinkin.set(-.39);
+  } 
+  
+  public void setRed(){
+    revBlinkin.set(-.17);
+  }
+
+  public void setGold(){
+    revBlinkin.set(-.07);
+  }
 }

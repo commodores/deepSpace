@@ -15,6 +15,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
+import edu.wpi.first.wpilibj.SpeedController;
+
 
 /**
  * Add your docs here.
@@ -26,6 +28,9 @@ public class DriveTrain extends Subsystem {
   private static final int SENSOR_UNITS_PER_ROTATION = 4096;
   private static final double WHEEL_DIAMETER_INCHES = 6d;
   private static final double WHEEL_CIRCUMFERENCE_INCHES = WHEEL_DIAMETER_INCHES * Math.PI;
+  public final double driveTrainGain = .03;
+
+  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
 
   private final WPI_TalonSRX leftMaster = RobotMap.driveTrainLeftMaster;
   private final WPI_TalonSRX leftSlave1 = RobotMap.driveTrainLeftSlave1;

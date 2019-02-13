@@ -12,6 +12,7 @@ import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.SpeedController;
 
 
 /**
@@ -24,6 +25,7 @@ public class Climber extends Subsystem {
   private final DoubleSolenoid rearLegSolenoid = RobotMap.rearLegSolenoid;
   private final WPI_TalonSRX frontLegMotor = RobotMap.frontLegMotor;
   private final WPI_TalonSRX rearLegMotor = RobotMap.rearLegMotor;
+  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
 
   
 
