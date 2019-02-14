@@ -6,31 +6,25 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.subsystems.*;
-import frc.robot.Robot;
-import frc.robot.commands.*;
-import frc.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class sandStormAuto extends CommandGroup {
+public class sandStormMiddleAuto extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public sandStormAuto() {
+  public sandStormMiddleAuto() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addParallel(new AutoFwdCrossLine(), 5.0);
-    addSequential(new ExtendHatcher(), 1.0);
-    addSequential(new ExtendGripper(), 1.0);
-    addSequential(new AutoFwd(), 3.0);
-    addSequential(new AutoCurveLeftFwd(), 3.25);
+    addParallel(new ExtendHatcher(), 1);
+    addSequential(new ExtendGripper(), 1);
+    addSequential(new AutoFwdMiddle(), 3.25);
+    addSequential(new AutoVeerRight(), 2);
+    addParallel(new RetractGripper(), 1);
+    addSequential(new RetractHatcher(), 1);
     
-    
-    
-
-
 
     // To run multiple commands at the same time,
     // use addParallel()
