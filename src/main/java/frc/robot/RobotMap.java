@@ -36,6 +36,7 @@ public class RobotMap {
   //gripper devices
   public static Solenoid solenoidHatcher;
   public static Solenoid solenoidExtender;
+  public static Solenoid AssistClimber;
 
   //sensors and misc devices
   public static Compressor compressor;
@@ -67,6 +68,7 @@ public class RobotMap {
     //gripper device initialization
     solenoidHatcher = new Solenoid(6);
     solenoidExtender = new Solenoid(7);
+    AssistClimber = new Solenoid(8);
     
     //sensors and misc device initialization
     compressor = new Compressor(0);

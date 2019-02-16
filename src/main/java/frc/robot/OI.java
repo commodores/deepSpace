@@ -52,7 +52,9 @@ public class OI {
     btn3.whenPressed(new LowGear());
     btn4.whenPressed(new HighGear());
     btn5.whenPressed(new ExtendGripper());
-    btn6.whenPressed(new RetractGripper()); 
+    btn6.whenPressed(new RetractGripper());
+    btn7.whenPressed(new AssistClimberUp());
+    btn8.whenPressed(new AssistClimberDown()); 
     btn9.whileHeld(new LegsDriveForward());
     btn10.whileHeld(new LegsDriveReverse());
 
@@ -62,6 +64,7 @@ public class OI {
     arcadeBtn4.whenPressed(new RetractFrontLeg());
     arcadeBtn5.whenPressed(new RetractBothLegs());
     arcadeBtn6.whenPressed(new RetractRearLeg());
+
     //arcadeBtn7.whileHeld(new LegsDriveForward());
     //arcadeBtn9.whileHeld(new LegsDriveReverse());
 

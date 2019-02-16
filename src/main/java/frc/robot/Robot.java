@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static IMU m_gyro;
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
+  public static AssistClimber m_AssistClimber;
   public static OI m_oi;
   public static LedBlinkinController m_ledBlinkinController;
 
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
     m_lidar = new LIDAR();
     m_motorShifter = new MotorShifter();
     m_ledBlinkinController = new LedBlinkinController();
+    m_AssistClimber = new AssistClimber();
     m_oi = new OI();
     
     m_chooser.setDefaultOption("Default Auto", new DecendHab2());
