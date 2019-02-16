@@ -61,6 +61,7 @@ public class RobotMap {
     //climber device initialization
     frontLegSolenoid = new DoubleSolenoid(2, 3);
     rearLegSolenoid = new DoubleSolenoid(4, 5);
+    AssistClimber = new Solenoid(8);
 
     frontLegMotor = new WPI_TalonSRX(3);
     rearLegMotor = new WPI_TalonSRX(7);
@@ -68,7 +69,7 @@ public class RobotMap {
     //gripper device initialization
     solenoidHatcher = new Solenoid(6);
     solenoidExtender = new Solenoid(7);
-    AssistClimber = new Solenoid(8);
+    
     
     //sensors and misc device initialization
     compressor = new Compressor(0);
