@@ -56,8 +56,10 @@ public class Robot extends TimedRobot {
     m_AssistClimber = new AssistClimber();
     m_oi = new OI();
     
-    m_chooser.setDefaultOption("Default Auto", new DecendHab2());
-    //m_chooser.addObject("My Auto", new MyAutoCommand());
+    m_chooser.setDefaultOption("Default Auto", new AutoFwdCrossLine());
+    m_chooser.addOption("My Auto", new SandstormLeftAutoGroup());
+    m_chooser.addOption("My Auto", new SandstormMiddleAutoGroup());
+    m_chooser.addOption("My Auto", new SandstormRightAutoGroup());
     
     SmartDashboard.putData("Auto mode", m_chooser);    
   }

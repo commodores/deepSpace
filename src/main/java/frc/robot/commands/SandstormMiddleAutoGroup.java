@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class sandStormMiddleAuto extends CommandGroup {
+public class SandstormMiddleAutoGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public sandStormMiddleAuto() {
+  public SandstormMiddleAutoGroup() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

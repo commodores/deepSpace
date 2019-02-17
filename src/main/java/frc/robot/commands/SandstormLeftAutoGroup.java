@@ -6,18 +6,22 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class RetrieveHatch extends CommandGroup {
+public class SandstormLeftAutoGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public RetrieveHatch() {
+  public SandstormLeftAutoGroup() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
+    addParallel(new AutoFwdCrossLine(), 5.0);
+    addSequential(new ExtendHatcher(), 1.0);
+    addSequential(new ExtendGripper(), 1.0);
+    addSequential(new AutoFwd(), 3.0);
+    addSequential(new AutoCurveLeftFwd(), 3.25);
 
     // To run multiple commands at the same time,
     // use addParallel()

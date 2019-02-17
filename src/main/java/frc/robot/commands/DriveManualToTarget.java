@@ -10,22 +10,29 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AssistClimberUp extends Command {
-  public AssistClimberUp() {
+public class DriveManualToTarget extends Command {
+  public DriveManualToTarget() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.m_AssistClimber);
+    requires(Robot.m_limelight);
+    requires(Robot.m_driveTrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_AssistClimber.AssistClimberUp();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if (Robot.m_limelight.targetExists())
+          {
+                Robot.m_driveTrain.drive(Robot.m_limelight.driveCmd()*.75, Robot.m_limelight.steerCmd()*.75);
+          }
+          else
+          {
+                Robot.m_driveTrain.drive(0.0,0.0);
+          }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -37,6 +44,7 @@ public class AssistClimberUp extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same

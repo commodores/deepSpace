@@ -63,4 +63,15 @@ public class LimeLight extends Subsystem {
     return Math.toDegrees(Math.acos(ratio));
   }
 
+  public double steerCmd() {
+    final double STEER_K = 0.03;                    // how hard to turn toward the target
+    return getX() * STEER_K;
+  }
+
+  public double driveCmd() {
+    final double DRIVE_K = 0.26;                    // how hard to drive fwd toward the target
+    final double DESIRED_TARGET_AREA = 13.0;        // Area of the target when the robot reaches the wall
+    return (DESIRED_TARGET_AREA - getArea()) * DRIVE_K;
+  }
+
 }
