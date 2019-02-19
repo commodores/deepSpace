@@ -8,41 +8,44 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import frc.robot.*;
 
-public class ExtendBothLegs extends Command {
-  public ExtendBothLegs() {
+
+public class AutoFwdEndGame extends Command {
+  public AutoFwdEndGame() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_climber);
-    requires(Robot.m_AssistClimber);
-    requires(Robot.m_ledBlinkinController);
+    requires(Robot.m_driveTrain);
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_climber.extendLifters();
-    Robot.m_AssistClimber.extendAssist();;
-    Robot.m_ledBlinkinController.setRed();
+    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetEncoders();
+    Robot.m_ledBlinkinController.set4C();
+    Robot.m_motorShifter.lowGear();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    Robot.m_driveTrain.setSpeed(.8 + pTerm, .8 -pTerm);
+    System.out.println("Gyro: " + Robot.m_gyro.getYaw());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.m_driveTrain.getRightEncoderInches() > 20 || isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_climber.stopFrontLifters();
-    Robot.m_climber.stopRearLifters();
+    Robot.m_driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same

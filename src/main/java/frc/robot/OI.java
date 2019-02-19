@@ -62,6 +62,7 @@ public class OI {
     arcadeBtn4.whenPressed(new RetractFrontLeg());
     arcadeBtn5.whenPressed(new RetractBothLegs());
     arcadeBtn6.whenPressed(new RetractRearLeg());
+    arcadeBtn7.whenPressed(new RetractAssist());
 
     arcadeBtn8.whileHeld(new DriveManualToTarget());
     arcadeBtn9.whileHeld(new AutoDriveToTarget());

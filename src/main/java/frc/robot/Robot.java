@@ -60,6 +60,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", new SandstormLeftAutoGroup());
     m_chooser.addOption("My Auto", new SandstormMiddleAutoGroup());
     m_chooser.addOption("My Auto", new SandstormRightAutoGroup());
+    m_chooser.addOption("My Auto", new EndGameClimb());
     
     SmartDashboard.putData("Auto mode", m_chooser);    
   }

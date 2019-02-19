@@ -25,9 +25,10 @@ public class RobotMap {
 
   public static SpeedController ledControllerRevBlinkin;
   
-  public static DoubleSolenoid motorShifter;
+  public static Solenoid motorShifter;
   
   //climber devices
+  public static Solenoid AssistClimber;
   public static DoubleSolenoid frontLegSolenoid;
   public static DoubleSolenoid rearLegSolenoid;
   public static WPI_TalonSRX frontLegMotor;
@@ -36,8 +37,7 @@ public class RobotMap {
   //gripper devices
   public static Solenoid solenoidHatcher;
   public static Solenoid solenoidExtender;
-  public static Solenoid AssistClimber;
-
+  
   //sensors and misc devices
   public static Compressor compressor;
 
@@ -52,16 +52,17 @@ public class RobotMap {
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
     driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
-    motorShifter = new DoubleSolenoid(0, 1);
-
+    motorShifter = new Solenoid(0);
+    
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
         ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
-    frontLegSolenoid = new DoubleSolenoid(2, 3);
-    rearLegSolenoid = new DoubleSolenoid(4, 5);
-    AssistClimber = new Solenoid(8);
+    AssistClimber = new Solenoid(1);
+    rearLegSolenoid = new DoubleSolenoid(2, 3);
+    frontLegSolenoid = new DoubleSolenoid(4, 5);
+    
 
     frontLegMotor = new WPI_TalonSRX(3);
     rearLegMotor = new WPI_TalonSRX(7);

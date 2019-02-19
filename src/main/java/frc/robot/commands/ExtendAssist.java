@@ -10,21 +10,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ExtendBothLegs extends Command {
-  public ExtendBothLegs() {
+public class ExtendAssist extends Command {
+  public ExtendAssist() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_climber);
     requires(Robot.m_AssistClimber);
-    requires(Robot.m_ledBlinkinController);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_climber.extendLifters();
-    Robot.m_AssistClimber.extendAssist();;
-    Robot.m_ledBlinkinController.setRed();
+    Robot.m_AssistClimber.extendAssist();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,14 +37,11 @@ public class ExtendBothLegs extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_climber.stopFrontLifters();
-    Robot.m_climber.stopRearLifters();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

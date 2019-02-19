@@ -26,11 +26,11 @@ private final Solenoid AssistClimber = RobotMap.AssistClimber;
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void AssistClimberUp(){
+  public void extendAssist(){
     AssistClimber.set(true);
   }
 
-  public void AssistClimberDown(){
+  public void retractAssist(){
     AssistClimber.set(false);
   }
   
