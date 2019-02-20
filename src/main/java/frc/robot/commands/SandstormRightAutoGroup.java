@@ -20,7 +20,6 @@ public class SandstormRightAutoGroup extends CommandGroup {
     addParallel(new AutoFwdCrossLine(), 5.0);
     addSequential(new ExtendHatcher(), 1.0);
     addSequential(new ExtendGripper(), 1.0);
-    addSequential(new AutoFwd(), 3.0);
     addSequential(new AutoCurveLeftFwd(), 3.25);
     
     // To run multiple commands at the same time,

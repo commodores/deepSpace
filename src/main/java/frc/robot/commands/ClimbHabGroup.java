@@ -18,6 +18,12 @@ public class ClimbHabGroup extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
+    addSequential(new AutoClimb());
+    addParallel(new ExtendLock(), .5);
+    addSequential(new AutoFwd1());
+    addSequential(new RetractFrontLeg(), 3.5);
+    addSequential(new AutoFwd2());
+    
 
     // To run multiple commands at the same time,
     // use addParallel()

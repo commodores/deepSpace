@@ -10,11 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AutoFwd extends Command {
-  public AutoFwd() {
+public class AutoFwd1 extends Command {
+  public AutoFwd1() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
+    requires(Robot.m_climber);
 
   }
 
@@ -30,20 +31,23 @@ public class AutoFwd extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.setSpeed(.8 + pTerm, .8 -pTerm);
+    Robot.m_driveTrain.setSpeed(-.5 + pTerm, -.5 -pTerm);
+    Robot.m_climber.driveFwd();
     System.out.println("Gyro: " + Robot.m_gyro.getYaw());
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_driveTrain.getRightEncoderInches() > 98 || isTimedOut();
+    return Robot.m_lidar.getDistance() < 50;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.m_driveTrain.stop();
+    Robot.m_climber.stopDrive();
   }
 
   // Called when another command which requires one or more of the same

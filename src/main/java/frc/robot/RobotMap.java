@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SpeedController;
+import frc.robot.subsystems.RearLegLock;
 import edu.wpi.first.wpilibj.Spark;
 
 public class RobotMap {
@@ -28,7 +29,7 @@ public class RobotMap {
   public static Solenoid motorShifter;
   
   //climber devices
-  public static Solenoid AssistClimber;
+  public static Solenoid rearLegLock;
   public static DoubleSolenoid frontLegSolenoid;
   public static DoubleSolenoid rearLegSolenoid;
   public static WPI_TalonSRX frontLegMotor;
@@ -59,7 +60,7 @@ public class RobotMap {
         ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
-    AssistClimber = new Solenoid(1);
+    rearLegLock = new Solenoid(1);
     rearLegSolenoid = new DoubleSolenoid(2, 3);
     frontLegSolenoid = new DoubleSolenoid(4, 5);
     

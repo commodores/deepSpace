@@ -67,12 +67,12 @@ public class Climber extends Subsystem {
     rearLegSolenoid.set(DoubleSolenoid.Value.kOff);
   }
   public void driveFwd(){
-    frontLegMotor.set(-.25);
-    rearLegMotor.set(.25);
-  }
-  public void driveBwd(){
     frontLegMotor.set(.25);
     rearLegMotor.set(-.25);
+  }
+  public void driveBwd(){
+    frontLegMotor.set(-.25);
+    rearLegMotor.set(.25);
   }
   public void stopDrive(){
     frontLegMotor.set(0);

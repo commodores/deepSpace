@@ -15,10 +15,10 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class AssistClimber extends Subsystem {
+public class RearLegLock extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-private final Solenoid AssistClimber = RobotMap.AssistClimber;
+private final Solenoid RearLegLock = RobotMap.rearLegLock;
 
   @Override
   public void initDefaultCommand() {
@@ -26,12 +26,12 @@ private final Solenoid AssistClimber = RobotMap.AssistClimber;
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void extendAssist(){
-    AssistClimber.set(true);
+  public void extendLock(){
+    RearLegLock.set(true);
   }
 
-  public void retractAssist(){
-    AssistClimber.set(false);
+  public void retractLock(){
+    RearLegLock.set(false);
   }
   
 }

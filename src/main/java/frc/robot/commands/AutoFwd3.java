@@ -10,17 +10,19 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ExtendAssist extends Command {
-  public ExtendAssist() {
+public class AutoFwd3 extends Command {
+  public AutoFwd3() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_AssistClimber);
+    requires(Robot.m_driveTrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_AssistClimber.extendAssist();
+    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetEncoders();
+    Robot.m_ledBlinkinController.set4C();
   }
 
   // Called repeatedly when this Command is scheduled to run

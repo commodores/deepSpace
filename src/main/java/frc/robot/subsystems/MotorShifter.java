@@ -32,11 +32,11 @@ public class MotorShifter extends Subsystem {
   
   }
   public void highGear(){
-    motorShifter.set(true);
+    motorShifter.set(false);
   }
 
   public void lowGear(){
-    motorShifter.set(false);
+    motorShifter.set(true);
   }
 
 }
