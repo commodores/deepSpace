@@ -42,8 +42,7 @@ public class AutoFwdCrossLine extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_driveTrain.getRightEncoderInches() > 98 || isTimedOut();
-    //return Robot.m_driveTrain.getLeftEncoderInches() > 98 || isTimedOut();
+    return Robot.m_driveTrain.getLeftEncoderInches() > 98 || isTimedOut();
   }
 
   // Called once after isFinished returns true

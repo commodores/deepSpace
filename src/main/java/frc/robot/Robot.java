@@ -60,7 +60,6 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", new SandstormLeftAutoGroup());
     m_chooser.addOption("My Auto", new SandstormMiddleAutoGroup());
     m_chooser.addOption("My Auto", new SandstormRightAutoGroup());
-    m_chooser.addOption("My Auto", new EndGameClimb());
     
     SmartDashboard.putData("Auto mode", m_chooser);    
   }
@@ -86,7 +85,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
-    SmartDashboard.putNumber("Right Encoder Distance", m_driveTrain.getRightEncoderInches());
   }
 
   /**

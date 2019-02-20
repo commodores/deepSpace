@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SpeedController;
-import frc.robot.subsystems.RearLegLock;
 import edu.wpi.first.wpilibj.Spark;
 
 public class RobotMap {

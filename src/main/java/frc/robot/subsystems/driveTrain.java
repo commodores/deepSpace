@@ -56,7 +56,6 @@ public class DriveTrain extends Subsystem {
     rightMaster.configAllSettings(talonConfig);
     leftMaster.configAllSettings(talonConfig);
 
-    rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,10);
     leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,10);
 
     rightMaster.setInverted(true);
@@ -119,16 +118,8 @@ public class DriveTrain extends Subsystem {
     return leftMaster.getSelectedSensorPosition(0);
   }
 
-  public double getRightEncoder() {
-    return rightMaster.getSelectedSensorPosition(0);
-  }
-
   public double getLeftEncoderInches() {
     return getLeftEncoder() / SENSOR_UNITS_PER_ROTATION * WHEEL_CIRCUMFERENCE_INCHES;
-  }
-
-  public double getRightEncoderInches() {
-    return getRightEncoder() / SENSOR_UNITS_PER_ROTATION * WHEEL_CIRCUMFERENCE_INCHES;
   }
 
   public void resetEncoders() {
