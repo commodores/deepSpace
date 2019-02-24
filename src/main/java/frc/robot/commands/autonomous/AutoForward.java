@@ -10,19 +10,19 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AutoReverse extends Command {
+public class AutoForward extends Command {
   
   private double distance;
   private double timeOut;
   
-  public AutoReverse(double getDistance, double getTimeOut) {
+  public AutoForward(double getDistance, double getTimeOut) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
     requires(Robot.m_gyro);
     distance = getDistance;
     timeOut = getTimeOut;
-    setTimeout(timeOut);  
+    setTimeout(timeOut);
   }
 
   // Called just before this Command runs the first time
@@ -36,7 +36,7 @@ public class AutoReverse extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(.5 + pTerm, .5 - pTerm);
+    Robot.m_driveTrain.driveTank(-.5 + pTerm, -.5 - pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()

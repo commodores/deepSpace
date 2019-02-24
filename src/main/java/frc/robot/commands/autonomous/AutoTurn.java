@@ -10,39 +10,46 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AutoReverse extends Command {
+public class AutoTurn extends Command {
   
-  private double distance;
+  private double degrees;
   private double timeOut;
-  
-  public AutoReverse(double getDistance, double getTimeOut) {
+
+  public AutoTurn(double getDegrees, double getTimeOut) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
     requires(Robot.m_gyro);
-    distance = getDistance;
+    degrees = getDegrees;
     timeOut = getTimeOut;
-    setTimeout(timeOut);  
+    setTimeout(timeOut);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_driveTrain.resetEncoders();
     Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetEncoders();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(.5 + pTerm, .5 - pTerm);
+    if(degrees > 0){
+      Robot.m_driveTrain.driveTank(-.5, .5);
+    } else {
+      Robot.m_driveTrain.driveTank(.5, -.5);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_driveTrain.getLeftEncoderInches() < -distance || isTimedOut();
+    if(degrees > 0){
+      return Robot.m_gyro.getYaw() > degrees || isTimedOut();
+    } else {
+      return Robot.m_gyro.getYaw() < degrees || isTimedOut();
+    }
   }
 
   // Called once after isFinished returns true

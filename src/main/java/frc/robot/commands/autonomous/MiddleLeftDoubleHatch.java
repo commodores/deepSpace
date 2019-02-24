@@ -19,6 +19,6 @@ public class MiddleLeftDoubleHatch extends CommandGroup {
     addParallel(new ExtendGripper());
     addSequential(new DriveForwardToFrontLeftCargoScoreFromMiddle());
     addSequential(new RetractGripper(), .1);
-    addSequential(new AutoReverse(12));
+    addSequential(new AutoReverse(12, 2));
   }
 }
