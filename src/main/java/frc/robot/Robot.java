@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.commands.*;
+import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
 
 
@@ -61,7 +62,32 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", new SandstormMiddleAutoGroup());
     m_chooser.addOption("My Auto", new SandstormRightAutoGroup());
     
-    SmartDashboard.putData("Auto mode", m_chooser);    
+    SmartDashboard.putData("Auto mode", m_chooser);
+    
+    //Commands to Dashboard
+
+    SmartDashboard.putData("All Wheels Forward", new AllWheelsFwd());
+    SmartDashboard.putData("All Wheels Reverse", new AllWheelsRev());
+    SmartDashboard.putData("Drive Train Slow Forward", new DriveTrainSlowFwd());
+    SmartDashboard.putData("Drive Train Slow Reverse", new DriveTrainSlowRev());
+
+    SmartDashboard.putData("Extend Both Legs", new ExtendBothLegs());
+    SmartDashboard.putData("Extend Front Leg", new ExtendFrontLeg());
+    SmartDashboard.putData("Extend Rear Leg", new ExtendRearLeg());
+    SmartDashboard.putData("Retract Both Legs", new RetractBothLegs());
+    SmartDashboard.putData("Retract Front Leg", new RetractFrontLeg());
+    SmartDashboard.putData("Retract Rear Leg", new RetractRearLeg());
+
+    SmartDashboard.putData("Extend Hatcher", new ExtendHatcher());
+    SmartDashboard.putData("Retract Hatcher", new RetractHatcher());
+    SmartDashboard.putData("Extend Gripper", new ExtendGripper());
+    SmartDashboard.putData("Retract Gripper", new RetractGripper());
+
+    SmartDashboard.putData("Extend Rear Leg Lock", new ExtendLock());
+    SmartDashboard.putData("Retract Rear Leg Lock", new RetractLock());
+
+    SmartDashboard.putData("Low Gear", new LowGear());
+    SmartDashboard.putData("High Gear", new HighGear());
   }
 
   /**
@@ -85,6 +111,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
+
+
   }
 
   /**

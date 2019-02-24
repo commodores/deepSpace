@@ -18,7 +18,7 @@ public class AllWheelsFwd extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addParallel(new DriveTrainSlow());
+    addParallel(new DriveTrainSlowFwd());
     addSequential(new LegsDriveForward());
 
     // To run multiple commands at the same time,

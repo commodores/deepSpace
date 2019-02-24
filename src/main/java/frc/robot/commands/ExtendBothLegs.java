@@ -22,7 +22,7 @@ public class ExtendBothLegs extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_climber.extendLifters();
+    Robot.m_climber.extendAllLifters();
     //Robot.m_AssistClimber.extendAssist();;
     Robot.m_ledBlinkinController.setRed();
   }

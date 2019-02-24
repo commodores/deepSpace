@@ -12,7 +12,6 @@ import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.SpeedController;
 
 
 /**
@@ -24,13 +23,11 @@ public class Climber extends Subsystem {
   private final DoubleSolenoid frontLegSolenoid = RobotMap.frontLegSolenoid;
   private final DoubleSolenoid rearLegSolenoid = RobotMap.rearLegSolenoid;
   private final WPI_TalonSRX frontLegMotor = RobotMap.frontLegMotor;
-  private final WPI_TalonSRX rearLegMotor = RobotMap.rearLegMotor;
-  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
-
-  
+  private final WPI_TalonSRX rearLegMotor = RobotMap.rearLegMotor;  
 
   public Climber(){
     frontLegMotor.setNeutralMode(NeutralMode.Brake);
+    rearLegMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   @Override
@@ -40,15 +37,22 @@ public class Climber extends Subsystem {
     //setDefaultCommand();
   }
   
-  public void extendLifters(){
+  public void extendAllLifters(){
     frontLegSolenoid.set(DoubleSolenoid.Value.kForward);
     rearLegSolenoid.set(DoubleSolenoid.Value.kForward);
   }
+
   public void extendFrontLifter(){
     frontLegSolenoid.set(DoubleSolenoid.Value.kForward);
   }
+
   public void extendRearLifter(){
     rearLegSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void retractAllLifters(){
+    frontLegSolenoid.set(DoubleSolenoid.Value.kReverse);
+    rearLegSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
 
   public void retractFrontLifter(){
@@ -66,14 +70,17 @@ public class Climber extends Subsystem {
   public void stopRearLifters(){
     rearLegSolenoid.set(DoubleSolenoid.Value.kOff);
   }
+  
   public void driveFwd(){
     frontLegMotor.set(.25);
     rearLegMotor.set(-.25);
   }
+  
   public void driveBwd(){
     frontLegMotor.set(-.25);
     rearLegMotor.set(.25);
   }
+  
   public void stopDrive(){
     frontLegMotor.set(0);
     rearLegMotor.set(0);

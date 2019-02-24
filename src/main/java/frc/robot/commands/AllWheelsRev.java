@@ -9,22 +9,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class SandstormMiddleAutoGroup extends CommandGroup {
+public class AllWheelsRev extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public SandstormMiddleAutoGroup() {
+  public AllWheelsRev() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addParallel(new ExtendHatcher(), 1);
-    addSequential(new ExtendGripper(), 1);
-    addSequential(new AutoFwdMiddle(), 3.25);
-    addSequential(new AutoVeerRight(), 2);
-    addParallel(new RetractGripper(), 1);
-    addSequential(new RetractHatcher(), 1);
-    
+    addParallel(new DriveTrainSlowRev());
+    addSequential(new LegsDriveReverse());
 
     // To run multiple commands at the same time,
     // use addParallel()

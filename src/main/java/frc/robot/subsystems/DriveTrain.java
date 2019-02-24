@@ -15,8 +15,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
-import edu.wpi.first.wpilibj.SpeedController;
-
 
 /**
  * Add your docs here.
@@ -30,7 +28,6 @@ public class DriveTrain extends Subsystem {
   private static final double WHEEL_CIRCUMFERENCE_INCHES = WHEEL_DIAMETER_INCHES * Math.PI;
   public final double driveTrainGain = .03;
   
-  private final SpeedController revBlinkin = RobotMap.ledControllerRevBlinkin;
 
   private final WPI_TalonSRX leftMaster = RobotMap.driveTrainLeftMaster;
   private final WPI_TalonSRX leftSlave1 = RobotMap.driveTrainLeftSlave1;
@@ -93,7 +90,7 @@ public class DriveTrain extends Subsystem {
   public void driveTank(double left, double right){
     setSpeed(left, right);
   }
-  public void drive(double speed, double rotation) {
+  public void driveArcade(double speed, double rotation) {
     setSpeed(-speed+rotation, -speed-rotation);
   }
 
@@ -124,7 +121,6 @@ public class DriveTrain extends Subsystem {
 
   public void resetEncoders() {
 		leftMaster.setSelectedSensorPosition(0, 0, 0);
-		rightMaster.setSelectedSensorPosition(0, 0, 0);
   }
 
 }

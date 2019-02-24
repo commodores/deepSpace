@@ -15,6 +15,7 @@ public class DriveManual extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
+    requires(Robot.m_limelight);
   }
 
   // Called just before this Command runs the first time
@@ -27,6 +28,11 @@ public class DriveManual extends Command {
   protected void execute() {
     double left = Robot.m_oi.getJoystick1().getRawAxis(1);
     double right = Robot.m_oi.getJoystick1().getRawAxis(5);
+
+    if (Robot.m_oi.getJoystick2().getRawButton(7)){
+      left += Robot.m_limelight.steerCmd();
+      right -= Robot.m_limelight.steerCmd();
+    }
 
     if (left > -0.2 && left <0.2){
       left = 0;
