@@ -8,17 +8,17 @@
 package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class SandstormRightAutoGroup extends CommandGroup {
+public class LeftSingleHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public SandstormRightAutoGroup() {
+  public LeftSingleHatch() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
     
-    
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
