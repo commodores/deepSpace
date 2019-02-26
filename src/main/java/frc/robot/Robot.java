@@ -25,6 +25,7 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   public static DriveTrain m_driveTrain;
+  public static Flipper m_flipper;
   public static Climber m_climber;
   public static Hatcher m_hatcher;
   public static LimeLight m_limelight;
@@ -47,6 +48,7 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     
     m_driveTrain = new DriveTrain();
+    m_flipper = new Flipper();
     m_climber = new Climber();
     m_hatcher = new Hatcher();
     m_gyro = new IMU();
