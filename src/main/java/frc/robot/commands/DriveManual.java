@@ -26,13 +26,14 @@ public class DriveManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    double speed = Robot.m_oi.getJoystick1().getRawAxis(1);
+    double rotation = Robot.m_oi.getJoystick1().getRawAxis(2);
+    
     double left = Robot.m_oi.getJoystick1().getRawAxis(1);
     double right = Robot.m_oi.getJoystick1().getRawAxis(5);
-
-    if (Robot.m_oi.getJoystick2().getRawButton(7)){
-      left += Robot.m_limelight.steerCmd();
-      right -= Robot.m_limelight.steerCmd();
-    }
+/*
+   
 
     if (left > -0.2 && left <0.2){
       left = 0;
@@ -43,7 +44,25 @@ public class DriveManual extends Command {
     }
 
     Robot.m_driveTrain.driveTank(left, right);
-  }
+  */
+    speed = Robot.m_oi.getJoystick1().getRawAxis(1);
+
+    rotation = Robot.m_oi.getJoystick1().getRawAxis(2);
+
+    if( speed > -0.2 && speed < 0.2){
+      speed = 0;
+    }
+
+    if( rotation > -0.2 && rotation < 0.2){
+      rotation = 0;
+    }
+
+    if (Robot.m_oi.getJoystick2().getRawButton(7)){
+      left += Robot.m_limelight.steerCmd();
+      right -= Robot.m_limelight.steerCmd();
+    }
+  
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
