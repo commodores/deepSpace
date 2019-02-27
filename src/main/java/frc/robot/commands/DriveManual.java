@@ -55,7 +55,7 @@ public class DriveManual extends Command {
       rotation = 0;
     }
 
-    Robot.m_driveTrain.driveArcade(speed, rotation);
+    Robot.m_driveTrain.driveArcade(-speed, -rotation);
 
     /*if (Robot.m_oi.getJoystick2().getRawButton(7)){
       left += Robot.m_limelight.steerCmd();
