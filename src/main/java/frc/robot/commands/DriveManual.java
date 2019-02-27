@@ -28,7 +28,7 @@ public class DriveManual extends Command {
   protected void execute() {
 
     double speed = -Robot.m_oi.getJoystick1().getRawAxis(1);
-    double rotation = -Robot.m_oi.getJoystick1().getRawAxis(2);
+    double rotation = -Robot.m_oi.getJoystick1().getRawAxis(2)*.75;
 
     if( speed > -0.2 && speed < 0.2){
       speed = 0;
