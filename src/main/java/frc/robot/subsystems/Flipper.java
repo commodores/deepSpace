@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DMC60;
+import frc.robot.commands.*;
 
 /**
  * Add your docs here.
@@ -18,18 +19,19 @@ import edu.wpi.first.wpilibj.DMC60;
 public class Flipper extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final DMC60 Flipper = RobotMap.flipperDmc60;
+  private final DMC60 flipper = RobotMap.flipperDmc60;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new MoveFlipper());
   }
-public void flipperUp(){
-  Flipper.set(.5);
+public void moveFlipper(double speed){
+  flipper.set(speed);
 }
-public void flipperDown(){
-  Flipper.set(-.5);
+public void flipperStop(){
+  flipper.set(0.0);
 }
 
 }

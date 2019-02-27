@@ -58,14 +58,15 @@ public class OI {
     btn9.whileHeld(new AllWheelsFwd());
     btn10.whileHeld(new AllWheelsRev());
 
+    
     arcadeBtn1.whenPressed(new ExtendFrontLeg());
     arcadeBtn2.whenPressed(new ExtendBothLegs());
     arcadeBtn3.whenPressed(new ExtendRearLeg());
     arcadeBtn4.whenPressed(new RetractFrontLeg());
     arcadeBtn5.whenPressed(new RetractBothLegs());
     arcadeBtn6.whenPressed(new RetractRearLeg());
-    arcadeBtn7.whenPressed(new ExtendFlipper());
-    arcadeBtn8.whenPressed(new RetractFlipper());
+    //arcadeBtn7.whenPressed(new ExtendFlipper());
+    //arcadeBtn8.whenPressed(new RetractFlipper());
     
 
   }

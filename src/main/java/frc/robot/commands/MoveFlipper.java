@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ExtendFlipper extends Command {
-  public ExtendFlipper() {
+public class MoveFlipper extends Command {
+  public MoveFlipper() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_flipper);
@@ -26,7 +26,7 @@ public class ExtendFlipper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_flipper.flipperUp();
+    Robot.m_flipper.moveFlipper(Robot.m_oi.getJoystick2().getRawAxis(1));
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,6 +38,7 @@ public class ExtendFlipper extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_flipper.flipperStop();
   }
 
   // Called when another command which requires one or more of the same

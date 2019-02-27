@@ -10,6 +10,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  * Add your docs here.
@@ -17,7 +19,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class MotorShifter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final Solenoid motorShifter = RobotMap.motorShifter;
+  private final DoubleSolenoid motorShifter = RobotMap.motorShifter;
 
   public MotorShifter() {
     //test
@@ -29,11 +31,13 @@ public class MotorShifter extends Subsystem {
   
   }
   public void highGear(){
-    motorShifter.set(false);
+    //motorShifter.set(false);
+    motorShifter.set(Value.kReverse);
   }
 
   public void lowGear(){
-    motorShifter.set(true);
+    //motorShifter.set(true);
+    motorShifter.set(Value.kForward);
   }
 
 }
