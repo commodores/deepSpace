@@ -58,6 +58,7 @@ public class RobotMap {
 
     //motorShifter = new Solenoid(0);
     motorShifter = new DoubleSolenoid(2, 3);
+    
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
         ledControllerRevBlinkin.setInverted(false);

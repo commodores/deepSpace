@@ -27,25 +27,8 @@ public class DriveManual extends Command {
   @Override
   protected void execute() {
 
-    double speed = Robot.m_oi.getJoystick1().getRawAxis(1);
-    double rotation = Robot.m_oi.getJoystick1().getRawAxis(2);
-    
-    //double left = Robot.m_oi.getJoystick1().getRawAxis(1);
-    //double right = Robot.m_oi.getJoystick1().getRawAxis(5);
-/*
-   
-
-    if (left > -0.2 && left <0.2){
-      left = 0;
-    }
-
-    if (right > -0.2 && right <0.2){
-      right = 0;
-    }
-
-    Robot.m_driveTrain.driveTank(left, right);
-  */
-    
+    double speed = -Robot.m_oi.getJoystick1().getRawAxis(1);
+    double rotation = -Robot.m_oi.getJoystick1().getRawAxis(2);
 
     if( speed > -0.2 && speed < 0.2){
       speed = 0;
@@ -55,8 +38,20 @@ public class DriveManual extends Command {
       rotation = 0;
     }
 
-    Robot.m_driveTrain.driveArcade(-speed, -rotation);
+    Robot.m_driveTrain.driveArcade(speed, rotation);
+    
+    //double left = Robot.m_oi.getJoystick1().getRawAxis(1);
+    //double right = Robot.m_oi.getJoystick1().getRawAxis(5);
+    /*
+    if (left > -0.2 && left <0.2){
+      left = 0;
+    }
 
+    if (right > -0.2 && right <0.2){
+      right = 0;
+    }
+
+    Robot.m_driveTrain.driveTank(left, right);
     /*if (Robot.m_oi.getJoystick2().getRawButton(7)){
       left += Robot.m_limelight.steerCmd();
       right -= Robot.m_limelight.steerCmd();
