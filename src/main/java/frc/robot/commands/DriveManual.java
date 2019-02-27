@@ -30,8 +30,8 @@ public class DriveManual extends Command {
     double speed = Robot.m_oi.getJoystick1().getRawAxis(1);
     double rotation = Robot.m_oi.getJoystick1().getRawAxis(2);
     
-    double left = Robot.m_oi.getJoystick1().getRawAxis(1);
-    double right = Robot.m_oi.getJoystick1().getRawAxis(5);
+    //double left = Robot.m_oi.getJoystick1().getRawAxis(1);
+    //double right = Robot.m_oi.getJoystick1().getRawAxis(5);
 /*
    
 
@@ -45,9 +45,7 @@ public class DriveManual extends Command {
 
     Robot.m_driveTrain.driveTank(left, right);
   */
-    speed = Robot.m_oi.getJoystick1().getRawAxis(1);
-
-    rotation = Robot.m_oi.getJoystick1().getRawAxis(2);
+    
 
     if( speed > -0.2 && speed < 0.2){
       speed = 0;
@@ -57,10 +55,13 @@ public class DriveManual extends Command {
       rotation = 0;
     }
 
-    if (Robot.m_oi.getJoystick2().getRawButton(7)){
+    Robot.m_driveTrain.driveArcade(speed, rotation);
+
+    /*if (Robot.m_oi.getJoystick2().getRawButton(7)){
       left += Robot.m_limelight.steerCmd();
       right -= Robot.m_limelight.steerCmd();
     }
+    */
   
 }
 
