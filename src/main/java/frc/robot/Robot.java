@@ -26,13 +26,13 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
   public static DriveTrain m_driveTrain;
   public static Flipper m_flipper;
-  //public static Climber m_climber;
+  public static Climber m_climber;
   public static Hatcher m_hatcher;
   public static LimeLight m_limelight;
   public static IMU m_gyro;
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
-  //public static RearLegLock m_rearLegLock;
+  public static RearLegLock m_rearLegLock;
   public static OI m_oi;
   public static LedBlinkinController m_ledBlinkinController;
 
@@ -49,14 +49,14 @@ public class Robot extends TimedRobot {
     
     m_driveTrain = new DriveTrain();
     m_flipper = new Flipper();
-    //m_climber = new Climber();
+    m_climber = new Climber();
     m_hatcher = new Hatcher();
     m_gyro = new IMU();
     m_limelight = new LimeLight();
     m_lidar = new LIDAR();
     m_motorShifter = new MotorShifter();
     m_ledBlinkinController = new LedBlinkinController();
-    //m_rearLegLock = new RearLegLock();
+    m_rearLegLock = new RearLegLock();
     m_oi = new OI();
     
     m_chooser.setDefaultOption("Just Drive", new DriveManual());

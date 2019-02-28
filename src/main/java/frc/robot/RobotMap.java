@@ -26,18 +26,18 @@ public class RobotMap {
 
   public static SpeedController ledControllerRevBlinkin;
   
-  public static DoubleSolenoid motorShifter;
+  public static Solenoid motorShifter;
   
   //climber devices
-  //public static Solenoid rearLegLock;
-  //public static DoubleSolenoid frontLegSolenoid;
-  //public static DoubleSolenoid rearLegSolenoid;
-  //public static WPI_TalonSRX frontLegMotor;
-  //public static WPI_TalonSRX rearLegMotor;
+  public static Solenoid rearLegLock;
+  public static DoubleSolenoid frontLegSolenoid;
+  public static DoubleSolenoid rearLegSolenoid;
+  public static WPI_TalonSRX frontLegMotor;
+  public static WPI_TalonSRX rearLegMotor;
   
   //gripper devices
-  public static DoubleSolenoid solenoidHatcher;
-  public static DoubleSolenoid solenoidExtender;
+  public static Solenoid solenoidHatcher;
+  public static Solenoid solenoidExtender;
   
   //sensors and misc devices
   public static Compressor compressor;
@@ -56,25 +56,25 @@ public class RobotMap {
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
     driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
-    //motorShifter = new Solenoid(0);
-    motorShifter = new DoubleSolenoid(2, 3);
+    motorShifter = new Solenoid(0);
+    //motorShifter = new DoubleSolenoid(2, 3);
     
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
         ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
-    //rearLegLock = new Solenoid(1);
-    //rearLegSolenoid = new DoubleSolenoid(2, 3);
-    //frontLegSolenoid = new DoubleSolenoid(4, 5);
+    rearLegLock = new Solenoid(1);
+    rearLegSolenoid = new DoubleSolenoid(2, 3);
+    frontLegSolenoid = new DoubleSolenoid(4, 5);
     
 
-    //frontLegMotor = new WPI_TalonSRX(7);
-    //rearLegMotor = new WPI_TalonSRX(8);
+    frontLegMotor = new WPI_TalonSRX(7);
+    rearLegMotor = new WPI_TalonSRX(8);
     
     //gripper device initialization
-    solenoidExtender = new DoubleSolenoid(4,5);
-    solenoidHatcher = new DoubleSolenoid(6,7);
+    solenoidExtender = new Solenoid(6);
+    solenoidHatcher = new Solenoid(7);
     
     
     //sensors and misc device initialization

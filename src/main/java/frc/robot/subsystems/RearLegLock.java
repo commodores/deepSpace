@@ -7,42 +7,30 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-
 
 /**
  * Add your docs here.
  */
-public class Hatcher extends Subsystem {
-  private final Solenoid solenoidHatcher = RobotMap.solenoidHatcher;
-  private final Solenoid solenoidExtender = RobotMap.solenoidExtender;  
+public class RearLegLock extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+private final Solenoid RearLegLock = RobotMap.rearLegLock;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public void extendHatcher(){
-    solenoidExtender.set(true);
-    //solenoidExtender.set(Value.kForward);
+
+  public void extendLock(){
+    RearLegLock.set(true);
   }
 
-  public void retractHatcher(){
-    solenoidExtender.set(false);
-    //solenoidExtender.set(Value.kReverse);
+  public void retractLock(){
+    RearLegLock.set(false);
   }
-
-  public void gripHatch(){
-    solenoidHatcher.set(true);
-    //solenoidHatcher.set(Value.kForward);
-  }
-
-  public void releaseHatch(){
-    solenoidHatcher.set(false);
-    //solenoidHatcher.set(Value.kReverse);
-  }
+  
 }
