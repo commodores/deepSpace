@@ -53,33 +53,33 @@ public class OI {
     btn4.whenPressed(new HighGear());
     btn5.whenPressed(new ExtendGripper());
     btn6.whenPressed(new RetractGripper());
-    btn7.whenPressed(new ExtendLock());
-    btn8.whenPressed(new RetractLock()); 
-    btn9.whileHeld(new AllWheelsFwd());
-    btn10.whileHeld(new AllWheelsRev());
+    //btn7.whenPressed(new ExtendLock());
+    //btn8.whenPressed(new RetractLock()); 
+    //btn9.whileHeld(new AllWheelsFwd());
+    //btn10.whileHeld(new AllWheelsRev());
 
     
-    arcadeBtn1.whenPressed(new ExtendFrontLeg());
-    arcadeBtn2.whenPressed(new ExtendBothLegs());
-    arcadeBtn3.whenPressed(new ExtendRearLeg());
-    arcadeBtn4.whenPressed(new RetractFrontLeg());
-    arcadeBtn5.whenPressed(new RetractBothLegs());
-    arcadeBtn6.whenPressed(new RetractRearLeg());
-    //arcadeBtn7.whenPressed(new ExtendFlipper());
-    //arcadeBtn8.whenPressed(new RetractFlipper());
+    //arcadeBtn1.whenPressed(new ExtendFrontLeg());
+    //arcadeBtn2.whenPressed(new ExtendBothLegs());
+    //arcadeBtn3.whenPressed(new ExtendRearLeg());
+    //arcadeBtn4.whenPressed(new RetractFrontLeg());
+    //arcadeBtn5.whenPressed(new RetractBothLegs());
+    //arcadeBtn6.whenPressed(new RetractRearLeg());
+    arcadeBtn7.whenPressed(new TurnToTarget());
+    arcadeBtn8.whileHeld(new DriveTrainSlowFwd());
     
 
   }
 
-  public Joystick getJoystick1() {
+  public Joystick getJoystick0() {
     return joy1;
   }
 
-  public Joystick getJoystick2() {
+  public Joystick getJoystick1() {
     return leftArcade;
   }
 
-  public Joystick getJoystick3() {
+  public Joystick getJoystick2() {
     return rightArcade;
   }
 }

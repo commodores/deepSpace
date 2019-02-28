@@ -29,11 +29,11 @@ public class RobotMap {
   public static DoubleSolenoid motorShifter;
   
   //climber devices
-  public static Solenoid rearLegLock;
-  public static DoubleSolenoid frontLegSolenoid;
-  public static DoubleSolenoid rearLegSolenoid;
-  public static WPI_TalonSRX frontLegMotor;
-  public static WPI_TalonSRX rearLegMotor;
+  //public static Solenoid rearLegLock;
+  //public static DoubleSolenoid frontLegSolenoid;
+  //public static DoubleSolenoid rearLegSolenoid;
+  //public static WPI_TalonSRX frontLegMotor;
+  //public static WPI_TalonSRX rearLegMotor;
   
   //gripper devices
   public static DoubleSolenoid solenoidHatcher;
@@ -48,9 +48,9 @@ public class RobotMap {
   public static void init(){
 
     //driveTrain device initialization
-    driveTrainLeftMaster = new WPI_TalonSRX(0);
-    driveTrainLeftSlave1 = new WPI_TalonSRX(1);
-    driveTrainLeftSlave2 = new WPI_TalonSRX(2);
+    driveTrainLeftMaster = new WPI_TalonSRX(1);
+    driveTrainLeftSlave1 = new WPI_TalonSRX(2);
+    driveTrainLeftSlave2 = new WPI_TalonSRX(3);
 
     driveTrainRightMaster = new WPI_TalonSRX(4);
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
@@ -69,8 +69,8 @@ public class RobotMap {
     //frontLegSolenoid = new DoubleSolenoid(4, 5);
     
 
-    frontLegMotor = new WPI_TalonSRX(3);
-    rearLegMotor = new WPI_TalonSRX(7);
+    //frontLegMotor = new WPI_TalonSRX(7);
+    //rearLegMotor = new WPI_TalonSRX(8);
     
     //gripper device initialization
     solenoidExtender = new DoubleSolenoid(4,5);

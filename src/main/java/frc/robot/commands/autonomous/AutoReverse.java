@@ -35,7 +35,7 @@ public class AutoReverse extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 + Robot.m_gyro.getYaw());
     Robot.m_driveTrain.driveTank(.5 + pTerm, .5 - pTerm);
   }
 

@@ -17,7 +17,11 @@ public class MiddleRightSingleHatch extends CommandGroup {
   public MiddleRightSingleHatch() {
     addParallel(new ExtendHatcher());
     addParallel(new ExtendGripper());
-    addSequential(new DriveForwardToFrontRightCargoScoreFromMiddle());
+    addSequential(new AutoForward(78, 5));
+    addSequential(new AutoTurn(-5, 5));
+    addSequential(new AutoForward(12,1));
+    addSequential(new TurnToTarget());
+    addSequential(new DriveFwdToHatch());
     addSequential(new RetractGripper(), 0.1);
   }
 }

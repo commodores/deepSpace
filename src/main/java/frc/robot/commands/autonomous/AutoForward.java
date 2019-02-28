@@ -36,13 +36,13 @@ public class AutoForward extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.5 + pTerm, -.5 - pTerm);
+    Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_driveTrain.getLeftEncoderInches() < -distance || isTimedOut();
+    return Robot.m_driveTrain.getLeftEncoderInches() > distance || isTimedOut();
   }
 
   // Called once after isFinished returns true

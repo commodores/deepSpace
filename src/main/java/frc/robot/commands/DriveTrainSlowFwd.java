@@ -20,12 +20,15 @@ public class DriveTrainSlowFwd extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.m_driveTrain.resetEncoders();
+    Robot.m_gyro.zero();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_driveTrain.driveTank(-.5, -.5);
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    Robot.m_driveTrain.driveTank(-.4 - pTerm, -.4 + pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()

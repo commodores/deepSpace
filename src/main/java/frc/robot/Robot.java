@@ -26,13 +26,13 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
   public static DriveTrain m_driveTrain;
   public static Flipper m_flipper;
-  public static Climber m_climber;
+  //public static Climber m_climber;
   public static Hatcher m_hatcher;
   public static LimeLight m_limelight;
   public static IMU m_gyro;
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
-  public static RearLegLock m_rearLegLock;
+  //public static RearLegLock m_rearLegLock;
   public static OI m_oi;
   public static LedBlinkinController m_ledBlinkinController;
 
@@ -49,14 +49,14 @@ public class Robot extends TimedRobot {
     
     m_driveTrain = new DriveTrain();
     m_flipper = new Flipper();
-    m_climber = new Climber();
+    //m_climber = new Climber();
     m_hatcher = new Hatcher();
     m_gyro = new IMU();
     m_limelight = new LimeLight();
     m_lidar = new LIDAR();
     m_motorShifter = new MotorShifter();
     m_ledBlinkinController = new LedBlinkinController();
-    m_rearLegLock = new RearLegLock();
+    //m_rearLegLock = new RearLegLock();
     m_oi = new OI();
     
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
@@ -72,26 +72,27 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     
     //Commands to Dashboard
+    SmartDashboard.putData("Turn To Target", new TurnToTarget());
 
-    SmartDashboard.putData("All Wheels Forward", new AllWheelsFwd());
-    SmartDashboard.putData("All Wheels Reverse", new AllWheelsRev());
+    //SmartDashboard.putData("All Wheels Forward", new AllWheelsFwd());
+    //SmartDashboard.putData("All Wheels Reverse", new AllWheelsRev());
     SmartDashboard.putData("Drive Train Slow Forward", new DriveTrainSlowFwd());
     SmartDashboard.putData("Drive Train Slow Reverse", new DriveTrainSlowRev());
 
-    SmartDashboard.putData("Extend Both Legs", new ExtendBothLegs());
-    SmartDashboard.putData("Extend Front Leg", new ExtendFrontLeg());
-    SmartDashboard.putData("Extend Rear Leg", new ExtendRearLeg());
-    SmartDashboard.putData("Retract Both Legs", new RetractBothLegs());
-    SmartDashboard.putData("Retract Front Leg", new RetractFrontLeg());
-    SmartDashboard.putData("Retract Rear Leg", new RetractRearLeg());
+    //SmartDashboard.putData("Extend Both Legs", new ExtendBothLegs());
+    //SmartDashboard.putData("Extend Front Leg", new ExtendFrontLeg());
+    //SmartDashboard.putData("Extend Rear Leg", new ExtendRearLeg());
+    //SmartDashboard.putData("Retract Both Legs", new RetractBothLegs());
+    //SmartDashboard.putData("Retract Front Leg", new RetractFrontLeg());
+    //SmartDashboard.putData("Retract Rear Leg", new RetractRearLeg());
 
     SmartDashboard.putData("Extend Hatcher", new ExtendHatcher());
     SmartDashboard.putData("Retract Hatcher", new RetractHatcher());
     SmartDashboard.putData("Extend Gripper", new ExtendGripper());
     SmartDashboard.putData("Retract Gripper", new RetractGripper());
 
-    SmartDashboard.putData("Extend Rear Leg Lock", new ExtendLock());
-    SmartDashboard.putData("Retract Rear Leg Lock", new RetractLock());
+    //SmartDashboard.putData("Extend Rear Leg Lock", new ExtendLock());
+    //SmartDashboard.putData("Retract Rear Leg Lock", new RetractLock());
 
     SmartDashboard.putData("Low Gear", new LowGear());
     SmartDashboard.putData("High Gear", new HighGear());
@@ -110,16 +111,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("tx", m_limelight.getX());
     SmartDashboard.putNumber("ty", m_limelight.getY());
     SmartDashboard.putBoolean("tv", m_limelight.targetExists());
-    SmartDashboard.putNumber("Limelight Distance", m_limelight.getDistance());
-    SmartDashboard.putNumber("Angle", m_limelight.getAngle());
 
     SmartDashboard.putNumber("Lidar Distance", m_lidar.getDistance());
     
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
-
-
   }
 
   /**

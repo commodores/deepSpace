@@ -15,10 +15,25 @@ public class MiddleLeftDoubleHatch extends CommandGroup {
    * Add your docs here.
    */
   public MiddleLeftDoubleHatch() {
-    addParallel(new ExtendHatcher());
-    addParallel(new ExtendGripper());
-    addSequential(new DriveForwardToFrontLeftCargoScoreFromMiddle());
-    addSequential(new RetractGripper(), .1);
-    addSequential(new AutoReverse(12, 2));
+    addSequential(new ExtendHatcher(),.1);
+    addSequential(new wait());
+    addSequential(new ExtendGripper(),.1);
+    addSequential(new AutoForward(78, 5));
+    addSequential(new AutoTurn(-10, 10));
+    addSequential(new AutoForward(12,1));
+    addSequential(new TurnToTarget());
+    addSequential(new DriveFwdToHatch());
+    addSequential(new RetractGripper(),.1);
+    addSequential(new wait());
+    addSequential(new AutoReverse(12,3));
+    addSequential(new AutoTurn(30,2));
+    addSequential(new wait());
+    addSequential(new AutoReverse(120, 5));
+    addSequential(new wait());
+    addSequential(new AutoTurn(48, 2));
+    addSequential(new TurnToTarget());
+    addSequential(new DriveFwdToHatch());
+    //addSequential(new ExtendGripper(),.1);
+
   }
 }

@@ -22,10 +22,10 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+
+  private static final double ENCODER_TICKS_PER_REVOLUTION = 20500;
+	private static final double WHEEL_CIRCUMFERENCE_INCHES = 6 * Math.PI;
   
-  private static final int SENSOR_UNITS_PER_ROTATION = 4096;
-  private static final double WHEEL_DIAMETER_INCHES = 6d;
-  private static final double WHEEL_CIRCUMFERENCE_INCHES = WHEEL_DIAMETER_INCHES * Math.PI;
   public final double driveTrainGain = .03;
   
 
@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem {
   public DriveTrain() {
 
     TalonSRXConfiguration talonConfig = new TalonSRXConfiguration();
-        talonConfig.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
+        talonConfig.primaryPID.selectedFeedbackSensor = FeedbackDevice.QuadEncoder;
         talonConfig.neutralDeadband =  0.001;
         talonConfig.slot0.kF = 1023.0/6800.0;
         talonConfig.slot0.kP = 1.0;
@@ -53,7 +53,7 @@ public class DriveTrain extends Subsystem {
     rightMaster.configAllSettings(talonConfig);
     leftMaster.configAllSettings(talonConfig);
 
-    leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,10);
+    leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
 
     rightMaster.setInverted(true);
     rightSlave1.setInverted(true);
@@ -110,13 +110,13 @@ public class DriveTrain extends Subsystem {
   public void stop() {
     setSpeed(0, 0);
   }
-  
+
   public double getLeftEncoder() {
-    return leftMaster.getSelectedSensorPosition(0);
+    return leftMaster.getSelectedSensorPosition();
   }
 
   public double getLeftEncoderInches() {
-    return getLeftEncoder() / SENSOR_UNITS_PER_ROTATION * WHEEL_CIRCUMFERENCE_INCHES;
+    return getLeftEncoder() / ENCODER_TICKS_PER_REVOLUTION * WHEEL_CIRCUMFERENCE_INCHES;
   }
 
   public void resetEncoders() {
