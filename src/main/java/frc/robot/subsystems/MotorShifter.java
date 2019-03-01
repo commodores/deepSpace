@@ -36,7 +36,7 @@ public class MotorShifter extends Subsystem {
   }
 
   public void lowGear(){
-    motorShifter.set(true);
+     motorShifter.set(true);
     //motorShifter.set(Value.kForward);
   }
 
