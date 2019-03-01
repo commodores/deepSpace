@@ -48,9 +48,9 @@ public class RobotMap {
   public static void init(){
 
     //driveTrain device initialization
-    driveTrainLeftMaster = new WPI_TalonSRX(1);
-    driveTrainLeftSlave1 = new WPI_TalonSRX(2);
-    driveTrainLeftSlave2 = new WPI_TalonSRX(3);
+    driveTrainLeftMaster = new WPI_TalonSRX(0);
+    driveTrainLeftSlave1 = new WPI_TalonSRX(1);
+    driveTrainLeftSlave2 = new WPI_TalonSRX(2);
 
     driveTrainRightMaster = new WPI_TalonSRX(4);
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
@@ -69,8 +69,8 @@ public class RobotMap {
     frontLegSolenoid = new DoubleSolenoid(4, 5);
     
 
-    frontLegMotor = new WPI_TalonSRX(7);
-    rearLegMotor = new WPI_TalonSRX(8);
+    frontLegMotor = new WPI_TalonSRX(3);
+    rearLegMotor = new WPI_TalonSRX(7);
     
     //gripper device initialization
     solenoidExtender = new Solenoid(6);
