@@ -7,7 +7,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
@@ -37,7 +40,9 @@ public class DriveTrain extends Subsystem {
   private final WPI_TalonSRX rightSlave1 = RobotMap.driveTrainRightSlave1;
   private final WPI_TalonSRX rightSlave2 = RobotMap.driveTrainRightSlave2;
 
-  
+  private final DifferentialDrive m_drive;
+
+    
   public DriveTrain() {
 
     TalonSRXConfiguration talonConfig = new TalonSRXConfiguration();
@@ -78,7 +83,9 @@ public class DriveTrain extends Subsystem {
     rightSlave2.setNeutralMode(NeutralMode.Brake);
     leftMaster.setNeutralMode(NeutralMode.Brake);
     leftSlave1.setNeutralMode(NeutralMode.Brake);
-    leftSlave2.setNeutralMode(NeutralMode.Brake);    
+    leftSlave2.setNeutralMode(NeutralMode.Brake);
+    
+    m_drive = new DifferentialDrive(leftMaster, rightMaster);
   }
 
   @Override
@@ -90,8 +97,13 @@ public class DriveTrain extends Subsystem {
   public void driveTank(double left, double right){
     setSpeed(left, right);
   }
+  
   public void driveArcade(double speed, double rotation) {
     setSpeed(-speed+rotation, -speed-rotation);
+  }
+  
+  public void driveCurvature(double speed, double  rotation, boolean quickTurn){
+    m_drive.curvatureDrive(speed, rotation, quickTurn);
   }
 
   public void setSpeed(double leftSpeed, double rightSpeed) {
