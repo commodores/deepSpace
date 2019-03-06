@@ -15,6 +15,7 @@ public class DriveManual extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
+    requires(Robot.m_gyro);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +27,11 @@ public class DriveManual extends Command {
   @Override
   protected void execute() {
 
-    /*double speed = -Robot.m_oi.getJoystick0().getRawAxis(1);
+    /*
+    ///////////
+    Arcade
+    ///////////
+    double speed = -Robot.m_oi.getJoystick0().getRawAxis(1);
     double rotation = -Robot.m_oi.getJoystick0().getRawAxis(2)*.75;
 
     if( speed > -0.2 && speed < 0.2){
@@ -37,8 +42,14 @@ public class DriveManual extends Command {
       rotation = 0;
     }
 
-    Robot.m_driveTrain.driveArcade(speed, rotation);*/
+    Robot.m_driveTrain.driveArcade(speed, rotation);
+    //////////
+    */
     
+    /*
+    ///////////
+    Tank
+    ///////////
     double left = Robot.m_oi.getJoystick0().getRawAxis(1);
     double right = Robot.m_oi.getJoystick0().getRawAxis(5);
     
@@ -51,6 +62,27 @@ public class DriveManual extends Command {
     }    
 
     Robot.m_driveTrain.driveTank(left, right);
+    //////////
+    */
+
+    /*
+    ///////////
+    Curvature
+    ///////////
+    */
+
+    //double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    //Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
+
+    double speed = Robot.m_oi.getJoystick0().getRawAxis(3);
+    double rotation = Robot.m_oi.getJoystick0().getRawAxis(5);
+    boolean quickTurn = Robot.m_oi.getJoystick0().getRawButton(10);
+    
+    Robot.m_driveTrain.driveCurvature(speed, rotation, quickTurn);
+
+
+    //////////
+
   
 }
 
