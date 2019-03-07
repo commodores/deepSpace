@@ -5,28 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.lib;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.lib.LIDARLite;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * Add your docs here.
  */
-public class LIDAR extends Subsystem {
-  LIDARLite lidar;
-	
-	public LIDAR() {
-		lidar = new LIDARLite(0);
-	}
-	
-	public double getDistance() {
-		return lidar.pidGet();
-	}
+public class PressureSensor {
 
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		//setDefaultCommand(new MySpecialCommand());
-	
-	}
+    private final AnalogInput mAnalogInput;
+
+    public PressureSensor(int analogInputNumber) {
+        mAnalogInput = new AnalogInput(analogInputNumber);
+    }
+
+    public double getAirPressurePsi() {
+        // taken from the datasheet
+        return 250.0 * mAnalogInput.getVoltage() / 5.0 - 25.0;
+    }
+
 }
