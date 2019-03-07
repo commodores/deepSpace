@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.DMC60;
 
 public class RobotMap {
   //driveTrain devices
@@ -41,9 +40,6 @@ public class RobotMap {
   
   //sensors and misc devices
   public static Compressor compressor;
-
-  //Flipper device
-  public static DMC60 flipperDmc60;
 
   public static void init(){
 
@@ -79,8 +75,6 @@ public class RobotMap {
     
     //sensors and misc device initialization
     compressor = new Compressor(0);
-
-    //FLipper device initialization
-    flipperDmc60 = new DMC60(0);
+    
   }
 }
