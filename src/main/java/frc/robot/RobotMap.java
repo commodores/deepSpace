@@ -26,7 +26,7 @@ public class RobotMap {
 
   public static SpeedController ledControllerRevBlinkin;
   
-  public static Solenoid motorShifter;
+  public static DoubleSolenoid motorShifter;
   
   //climber devices
   public static Solenoid rearLegLock;
@@ -36,8 +36,8 @@ public class RobotMap {
   public static WPI_TalonSRX rearLegMotor;
   
   //gripper devices
-  public static Solenoid solenoidHatcher;
-  public static Solenoid solenoidExtender;
+  public static DoubleSolenoid solenoidHatcher;
+  public static DoubleSolenoid solenoidExtender;
   
   //sensors and misc devices
   public static Compressor compressor;
@@ -48,34 +48,40 @@ public class RobotMap {
   public static void init(){
 
     //driveTrain device initialization
-    driveTrainLeftMaster = new WPI_TalonSRX(0);
-    driveTrainLeftSlave1 = new WPI_TalonSRX(1);
-    driveTrainLeftSlave2 = new WPI_TalonSRX(2);
+    driveTrainLeftMaster = new WPI_TalonSRX(1);
+    driveTrainLeftSlave1 = new WPI_TalonSRX(2);
+    driveTrainLeftSlave2 = new WPI_TalonSRX(3);
 
     driveTrainRightMaster = new WPI_TalonSRX(4);
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
     driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
-    motorShifter = new Solenoid(0);
-    //motorShifter = new DoubleSolenoid(2, 3);
+    // Production Robot
+    //motorShifter = new Solenoid(0);
+
+    // Practice Robot
+    motorShifter = new DoubleSolenoid(0, 1);
     
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
         ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
-    rearLegLock = new Solenoid(1);
-    rearLegSolenoid = new DoubleSolenoid(2, 3);
-    frontLegSolenoid = new DoubleSolenoid(4, 5);
+    //rearLegLock = new Solenoid(1);
+    //rearLegSolenoid = new DoubleSolenoid(2, 3);
+    //frontLegSolenoid = new DoubleSolenoid(4, 5);
     
 
     frontLegMotor = new WPI_TalonSRX(3);
     rearLegMotor = new WPI_TalonSRX(7);
     
-    //gripper device initialization
-    solenoidExtender = new Solenoid(6);
-    solenoidHatcher = new Solenoid(7);
-    
+    //gripper device initialization production
+    //solenoidExtender = new Solenoid(6);
+    //solenoidHatcher = new Solenoid(7);
+
+    //gripper device initialization practice
+    solenoidExtender = new DoubleSolenoid(2,3);
+    solenoidHatcher = new DoubleSolenoid(4,5);
     
     //sensors and misc device initialization
     compressor = new Compressor(0);

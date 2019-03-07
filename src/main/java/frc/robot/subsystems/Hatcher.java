@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
  * Add your docs here.
  */
 public class Hatcher extends Subsystem {
-  private final Solenoid solenoidHatcher = RobotMap.solenoidHatcher;
-  private final Solenoid solenoidExtender = RobotMap.solenoidExtender;  
+  private final DoubleSolenoid solenoidHatcher = RobotMap.solenoidHatcher;
+  private final DoubleSolenoid solenoidExtender = RobotMap.solenoidExtender;  
 
   @Override
   public void initDefaultCommand() {
@@ -27,22 +27,30 @@ public class Hatcher extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void extendHatcher(){
-    solenoidExtender.set(true);
-    //solenoidExtender.set(Value.kForward);
+    //solenoidExtender.set(true);
+    solenoidExtender.set(Value.kForward);
   }
 
   public void retractHatcher(){
-    solenoidExtender.set(false);
-    //solenoidExtender.set(Value.kReverse);
+    //solenoidExtender.set(false);
+    solenoidExtender.set(Value.kReverse);
   }
 
   public void gripHatch(){
-    solenoidHatcher.set(true);
-    //solenoidHatcher.set(Value.kForward);
+    //solenoidHatcher.set(true);
+    solenoidHatcher.set(Value.kForward);
   }
 
   public void releaseHatch(){
-    solenoidHatcher.set(false);
-    //solenoidHatcher.set(Value.kReverse);
+    //solenoidHatcher.set(false);
+    solenoidHatcher.set(Value.kReverse);
+  }
+
+  public void stopExtend(){
+    solenoidExtender.set(Value.kOff);
+  }
+
+  public void stopGrip(){
+    solenoidHatcher.set(Value.kOff);
   }
 }

@@ -52,11 +52,11 @@ public class OI {
     btn3.whenPressed(new LowGear());
     btn4.whenPressed(new HighGear());
     btn5.whenPressed(new ExtendGripper());
-    btn6.whenPressed(new RetractGripper());
+    //btn6.whenPressed(new RetractGripper());
     btn7.whenPressed(new ExtendLock());
     btn8.whenPressed(new RetractLock()); 
     btn9.whileHeld(new AllWheelsFwd());
-    btn10.whileHeld(new AllWheelsRev());
+    //btn10.whileHeld(new AllWheelsRev());
 
     
     arcadeBtn1.whenPressed(new ExtendFrontLeg());

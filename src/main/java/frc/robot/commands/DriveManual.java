@@ -74,9 +74,17 @@ public class DriveManual extends Command {
     //double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
     //Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
 
-    double speed = Robot.m_oi.getJoystick0().getRawAxis(3);
-    double rotation = Robot.m_oi.getJoystick0().getRawAxis(5);
-    boolean quickTurn = Robot.m_oi.getJoystick0().getRawButton(10);
+    double speed = Robot.m_oi.getJoystick0().getRawAxis(1);
+    double rotation = -Robot.m_oi.getJoystick0().getRawAxis(4)*.75;
+    boolean quickTurn = Robot.m_oi.getJoystick0().getRawButton(6);
+
+    if( speed > -0.2 && speed < 0.2){
+      speed = 0;
+    }
+
+    if( rotation > -0.2 && rotation < 0.2){
+      rotation = 0;
+    }
     
     Robot.m_driveTrain.driveCurvature(speed, rotation, quickTurn);
 

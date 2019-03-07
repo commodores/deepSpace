@@ -60,9 +60,9 @@ public class DriveTrain extends Subsystem {
 
     leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
 
-    rightMaster.setInverted(true);
-    rightSlave1.setInverted(true);
-    rightSlave2.setInverted(true);
+    rightMaster.setInverted(false);
+    rightSlave1.setInverted(false);
+    rightSlave2.setInverted(false);
     leftMaster.setInverted(false);
     leftSlave1.setInverted(false);
     leftSlave2.setInverted(false);
