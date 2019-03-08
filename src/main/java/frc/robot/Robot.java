@@ -62,13 +62,9 @@ public class Robot extends TimedRobot {
     CameraServer.getInstance().startAutomaticCapture();
 
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
-    m_chooser.addOption("Left Double", new LeftDoubleHatch());
     m_chooser.addOption("Left Single", new LeftSingleHatch());
-    m_chooser.addOption("Middle Left Double", new MiddleLeftDoubleHatch());
     m_chooser.addOption("Middle Left Single", new MiddleLeftSingleHatch());
-    m_chooser.addOption("Middle Right Double", new MiddleRightDoubleHatch());
     m_chooser.addOption("Middle Right Single", new MiddleRightSingleHatch());
-    m_chooser.addOption("Right Double", new RightDoubleHatch());
     m_chooser.addOption("Right Single", new RightSingleHatch());
     
     SmartDashboard.putData("Auto mode", m_chooser);

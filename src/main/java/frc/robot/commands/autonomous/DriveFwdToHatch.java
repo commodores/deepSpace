@@ -32,13 +32,13 @@ public class DriveFwdToHatch extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.4 - pTerm, -.4 + pTerm);
+    Robot.m_driveTrain.driveTank(-.2 - pTerm, -.2 + pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_lidar.getDistance() < 12 || isTimedOut();
+    return Robot.m_lidar.getDistance() < 13 || isTimedOut();
   }
 
   // Called once after isFinished returns true

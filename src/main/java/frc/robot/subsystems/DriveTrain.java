@@ -67,11 +67,10 @@ public class DriveTrain extends Subsystem {
     leftSlave1.setInverted(false);
     leftSlave2.setInverted(false);
 
-    rightMaster.setSensorPhase(true);
     leftMaster.setSensorPhase(true);
 
-    rightMaster.configOpenloopRamp(.5);
-    leftMaster.configOpenloopRamp(.5);
+    rightMaster.configOpenloopRamp(.25);
+    leftMaster.configOpenloopRamp(.25);
 
     leftSlave1.follow(leftMaster);
     leftSlave2.follow(leftMaster);

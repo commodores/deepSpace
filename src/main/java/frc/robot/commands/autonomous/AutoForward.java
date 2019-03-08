@@ -36,7 +36,7 @@ public class AutoForward extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
+    Robot.m_driveTrain.driveTank(-.3 - pTerm, -.3 + pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()
