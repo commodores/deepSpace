@@ -21,7 +21,7 @@ public class LIDAR extends Subsystem {
 	}
 	
 	public double getDistance() {
-		return lidar.pidGet();
+		return lidar.getDistanceIn(true);
 	}
 
 	public void initDefaultCommand() {

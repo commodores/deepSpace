@@ -68,7 +68,7 @@ public class RobotMap {
     //frontLegSolenoid = new DoubleSolenoid(4, 5);
     
 
-    frontLegMotor = new WPI_TalonSRX(3);
+    frontLegMotor = new WPI_TalonSRX(8);
     rearLegMotor = new WPI_TalonSRX(7);
     
     //gripper device initialization production

@@ -96,7 +96,7 @@ public class LIDARLite {
 			}
 			return sum / buffer.size();
 		}
-
+/*
 		public void update() {
 			if (buffer.size() > windowSize) {
 				buffer.pop();
@@ -106,13 +106,13 @@ public class LIDARLite {
 		}
 
 		public double pidGet() {
-			update();
+			//update();
 			double sum = 0;
 			for (Double i : buffer) {
 				sum += i;
 			}
 			return sum / buffer.size();
 		}
-	    
+	    */
 	    
 	}
