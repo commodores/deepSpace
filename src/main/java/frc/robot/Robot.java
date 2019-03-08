@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.commands.*;
 import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.cameraserver.*;
 
 
 /**
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  CameraServer server;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -57,6 +59,8 @@ public class Robot extends TimedRobot {
     m_rearLegLock = new RearLegLock();
     m_oi = new OI();
     
+    CameraServer.getInstance().startAutomaticCapture();
+
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
     m_chooser.addOption("Left Double", new LeftDoubleHatch());
     m_chooser.addOption("Left Single", new LeftSingleHatch());

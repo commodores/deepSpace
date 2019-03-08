@@ -9,12 +9,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.lib.LIDARLite;
+import java.util.LinkedList;
 
 /**
  * Add your docs here.
  */
 public class LIDAR extends Subsystem {
-  LIDARLite lidar;
+  	LIDARLite lidar;
 	
 	public LIDAR() {
 		lidar = new LIDARLite(0);

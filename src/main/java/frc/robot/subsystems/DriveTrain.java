@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
@@ -40,7 +40,7 @@ public class DriveTrain extends Subsystem {
   private final WPI_TalonSRX rightSlave1 = RobotMap.driveTrainRightSlave1;
   private final WPI_TalonSRX rightSlave2 = RobotMap.driveTrainRightSlave2;
 
-  private final DifferentialDrive m_drive;
+  //private final DifferentialDrive m_drive;
 
     
   public DriveTrain() {
@@ -60,9 +60,9 @@ public class DriveTrain extends Subsystem {
 
     leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
 
-    rightMaster.setInverted(false);
-    rightSlave1.setInverted(false);
-    rightSlave2.setInverted(false);
+    rightMaster.setInverted(true);
+    rightSlave1.setInverted(true);
+    rightSlave2.setInverted(true);
     leftMaster.setInverted(false);
     leftSlave1.setInverted(false);
     leftSlave2.setInverted(false);
@@ -85,7 +85,7 @@ public class DriveTrain extends Subsystem {
     leftSlave1.setNeutralMode(NeutralMode.Brake);
     leftSlave2.setNeutralMode(NeutralMode.Brake);
     
-    m_drive = new DifferentialDrive(leftMaster, rightMaster);
+    //m_drive = new DifferentialDrive(leftMaster, rightMaster);
   }
 
   @Override
@@ -102,9 +102,9 @@ public class DriveTrain extends Subsystem {
     setSpeed(-speed+rotation, -speed-rotation);
   }
   
-  public void driveCurvature(double speed, double  rotation, boolean quickTurn){
-    m_drive.curvatureDrive(speed, rotation, quickTurn);
-  }
+  //public void driveCurvature(double speed, double  rotation, boolean quickTurn){
+  //  m_drive.curvatureDrive(speed, rotation, quickTurn);
+  //}
 
   public void setSpeed(double leftSpeed, double rightSpeed) {
 		setSpeedLeft(leftSpeed);

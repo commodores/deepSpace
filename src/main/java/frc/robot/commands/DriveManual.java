@@ -32,7 +32,7 @@ public class DriveManual extends Command {
     //Arcade
     ///////////
     double speed = Robot.m_oi.getJoystick0().getRawAxis(3) - Robot.m_oi.getJoystick0().getRawAxis(2);
-    double rotation = -Robot.m_oi.getJoystick0().getRawAxis(0)*.75;
+    double rotation = -Robot.m_oi.getJoystick0().getRawAxis(0);
 
     if( speed > -0.2 && speed < 0.2){
       speed = 0;
@@ -71,25 +71,25 @@ public class DriveManual extends Command {
     ///////////
     
 
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
-/*
-    double speed = Robot.m_oi.getJoystick0().getRawAxis(3) - Robot.m_oi.getJoystick0().getRawAxis(2);
-    double rotation = -Robot.m_oi.getJoystick0().getRawAxis(0)*.75;
-    boolean quickTurn = Robot.m_oi.getJoystick0().getRawButton(10);
+    //double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    //Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
 
-    if( speed > -0.2 && speed < 0.2){
-      speed = 0;
-    }
+    //double speed = Robot.m_oi.getJoystick0().getRawAxis(3) - Robot.m_oi.getJoystick0().getRawAxis(2);
+    //double rotation = -Robot.m_oi.getJoystick0().getRawAxis(0)*.75;
+    //boolean quickTurn = Robot.m_oi.getJoystick0().getRawButton(10);
 
-    if( rotation > -0.2 && rotation < 0.2){
-      rotation = 0;
-    }
+    //if( speed > -0.2 && speed < 0.2){
+    //  speed = 0;
+    //}
+
+    //if( rotation > -0.2 && rotation < 0.2){
+    //  rotation = 0;
+    //}
     
-    Robot.m_driveTrain.driveCurvature(-speed, rotation, quickTurn);
+    //Robot.m_driveTrain.driveCurvature(-speed, rotation, quickTurn);
 
 
-  */  //////////
+    //////////
 
   
 }

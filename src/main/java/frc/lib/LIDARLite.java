@@ -3,7 +3,7 @@ package frc.lib;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalSource;
-import java.util.LinkedList;
+
 
 /**
  * This is the library for use of the LIDAR lite v3 over PWM connection. 
@@ -15,9 +15,6 @@ public class LIDARLite {
 	    public boolean printWarnings = false;
 	    private Counter counter;
 		private int printedWarningCount = 5;
-		
-		protected LinkedList<Double> buffer;
-		protected int windowSize = 50;
 	    
 	    /**
 	     * Create an object for a LIDAR-Lite attached to some port on the roboRIO
@@ -87,32 +84,6 @@ public class LIDARLite {
 	    	}else {
 	    	return  Math.floor(in*10)/10;
 	    	}
-		}
-		
-		public double getValue() {
-			double sum = 0;
-			for (Double i : buffer) {
-				sum += i;
-			}
-			return sum / buffer.size();
-		}
-/*
-		public void update() {
-			if (buffer.size() > windowSize) {
-				buffer.pop();
-			}
-			double distance = getDistanceIn(true);
-			buffer.add(distance);
-		}
-
-		public double pidGet() {
-			//update();
-			double sum = 0;
-			for (Double i : buffer) {
-				sum += i;
-			}
-			return sum / buffer.size();
-		}
-	    */
+		}	    
 	    
 	}
