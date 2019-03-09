@@ -16,17 +16,22 @@ public class MiddleHatch extends CommandGroup {
    */
   public MiddleHatch() {
     addSequential(new ExtendHatcher(),.1);
-    addSequential(new Wait());
+    addSequential(new wait());
+    addSequential(new AutoForward(75,25));
+    addSequential(new TurnToTarget(), 25);
     addSequential(new ExtendGripper(),.1);
-    addSequential(new AutoForward(78, 15));
-    addSequential(new TurnToTarget(), 5);
-    addSequential(new DriveFwdToHatch(), 5);
+    addSequential(new DriveFwdToHatch(), 25);
     addSequential(new RetractGripper(),.1);
-    addSequential(new Wait());
-    addSequential(new AutoReverse(12,3));
-    addSequential(new AutoTurn(-90, 3));
-    addSequential(new AutoForward(50, 5));
-    addSequential(new AutoTurn(-90, 3));
+    addSequential(new wait());
+    addSequential(new AutoReverse(16,3));
+    addSequential(new AutoTurn(-90, 13));
+    addSequential(new AutoForward(105, 25));
+    addSequential(new AutoTurn(-86, 30));
+    addSequential(new AutoForward(100, 25));
+    addSequential(new TurnToTarget(), 25);
+    addSequential(new DriveFwdToHatch(), 25);
+    addSequential(new RetractHatcher(), .1);
+    //addSequential(new ExtendGripper(), 25);
 
   }
 }

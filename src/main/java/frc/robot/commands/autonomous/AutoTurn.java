@@ -36,9 +36,9 @@ public class AutoTurn extends Command {
   @Override
   protected void execute() {
     if(degrees > 0){
-      Robot.m_driveTrain.driveTank(-.5, .5);
+      Robot.m_driveTrain.driveTank(-.65, .65);
     } else {
-      Robot.m_driveTrain.driveTank(.5, -.5);
+      Robot.m_driveTrain.driveTank(.65, -.65);
     }
   }
 

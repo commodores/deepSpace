@@ -28,7 +28,7 @@ public class DriveTrain extends Subsystem {
   private static final double ENCODER_TICKS_PER_REVOLUTION = 20500;
 	private static final double WHEEL_CIRCUMFERENCE_INCHES = 6 * Math.PI;
   
-  public final double driveTrainGain = .03;
+  public final double driveTrainGain = .015;
   
 
   private final WPI_TalonSRX leftMaster = RobotMap.driveTrainLeftMaster;
@@ -84,6 +84,7 @@ public class DriveTrain extends Subsystem {
     leftSlave2.setNeutralMode(NeutralMode.Brake);
     
     m_drive = new DifferentialDrive(leftMaster, rightMaster);
+    m_drive.setSafetyEnabled(false);
   }
 
   @Override
@@ -93,32 +94,16 @@ public class DriveTrain extends Subsystem {
   }
 
   public void driveTank(double left, double right){
-    setSpeed(left, right);
+    m_drive.tankDrive(left, right);
   }
   
-  public void driveArcade(double speed, double rotation) {
-    setSpeed(-speed+rotation, -speed-rotation);
-  }
-  
+    
   public void driveCurvature(double speed, double  rotation, boolean quickTurn){
     m_drive.curvatureDrive(speed, rotation, quickTurn);
   }
 
-  public void setSpeed(double leftSpeed, double rightSpeed) {
-		setSpeedLeft(leftSpeed);
-		setSpeedRight(rightSpeed);
-  }
-  
-  public void setSpeedLeft(double leftSpeed) {
-		leftMaster.set(ControlMode.PercentOutput, leftSpeed);
-	}
-	
-	public void setSpeedRight(double rightSpeed) {
-		 rightMaster.set(ControlMode.PercentOutput, rightSpeed);
-	}
-  
   public void stop() {
-    setSpeed(0, 0);
+    m_drive.stopMotor();
   }
 
   public double getLeftEncoder() {

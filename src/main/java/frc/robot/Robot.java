@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
   public static MotorShifter m_motorShifter;
   public static RearLegLock m_rearLegLock;
   public static OI m_oi;
+  public static PSensor m_pressure;
   public static LedBlinkinController m_ledBlinkinController;
 
   Command m_autonomousCommand;
@@ -57,13 +58,14 @@ public class Robot extends TimedRobot {
     m_motorShifter = new MotorShifter();
     m_ledBlinkinController = new LedBlinkinController();
     m_rearLegLock = new RearLegLock();
+    m_pressure = new PSensor();
     m_oi = new OI();
     
     CameraServer.getInstance().startAutomaticCapture();
 
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
     m_chooser.addOption("Left Single", new LeftHatch());
-    m_chooser.addOption("Middle Left Single", new MiddleHatch());
+    m_chooser.addOption("Middle Single", new MiddleHatch());
     m_chooser.addOption("Right Single", new RightHatch());
     
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -114,6 +116,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
+    SmartDashboard.putNumber("Pressure", m_pressure.getPressure());
   }
 
   /**
