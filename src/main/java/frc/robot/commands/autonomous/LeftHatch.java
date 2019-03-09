@@ -8,11 +8,11 @@
 package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LeftSingleHatch extends CommandGroup {
+public class LeftHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LeftSingleHatch() {
+  public LeftHatch() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
