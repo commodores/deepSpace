@@ -13,10 +13,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 
 /**
  * Add your docs here.
@@ -43,19 +41,6 @@ public class DriveTrain extends Subsystem {
 
     
   public DriveTrain() {
-
-    TalonSRXConfiguration talonConfig = new TalonSRXConfiguration();
-        talonConfig.primaryPID.selectedFeedbackSensor = FeedbackDevice.QuadEncoder;
-        talonConfig.neutralDeadband =  0.001;
-        talonConfig.slot0.kF = 1023.0/6800.0;
-        talonConfig.slot0.kP = 1.0;
-        talonConfig.slot0.kI = 0.0;
-        talonConfig.slot0.kD = 0.0;
-        talonConfig.slot0.integralZone = 400;
-        talonConfig.slot0.closedLoopPeakOutput = 1.0;
-        
-    rightMaster.configAllSettings(talonConfig);
-    leftMaster.configAllSettings(talonConfig);
 
     leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
 
