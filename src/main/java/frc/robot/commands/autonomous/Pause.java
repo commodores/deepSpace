@@ -9,11 +9,11 @@ package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class wait extends Command {
-  public wait() {
+public class Pause extends Command {
+  public Pause() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(.25);
+    setTimeout(.025);
   }
 
   // Called just before this Command runs the first time
