@@ -33,9 +33,9 @@ public class Robot extends TimedRobot {
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
   public static RearLegLock m_rearLegLock;
-  public static OI m_oi;
   public static PSensor m_pressure;
   public static LedBlinkinController m_ledBlinkinController;
+  public static OI m_oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

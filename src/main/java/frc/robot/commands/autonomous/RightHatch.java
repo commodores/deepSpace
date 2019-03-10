@@ -13,22 +13,26 @@ public class RightHatch extends CommandGroup {
    * Add your docs here.
    */
   public RightHatch() {
-    // Add Commands here:
-    // e.g. addSequential(new Command1());
-    // addSequential(new Command2());
-    // these will run in order.
+    //Extend Hatcher and Gripper
     
-    
-    // To run multiple commands at the same time,
-    // use addParallel()
-    // e.g. addParallel(new Command1());
-    // addSequential(new Command2());
-    // Command1 and Command2 will run in parallel.
+    //Drive forward veering right
 
-    // A command group will require all of the subsystems that each member
-    // would require.
-    // e.g. if Command1 requires chassis, and Command2 requires arm,
-    // a CommandGroup containing them would require both the chassis and the
-    // arm.
+    //Turn left ~ 90 degrees
+
+    //Turn to hatch
+
+    //Forward to score
+
+    //Retract Gripper
+
+    //Reverse
+
+    //Turn left 90
+
+    //Drive forward veering left
+
+    //Turn to hatch
+
+    //Forward to retrieve Hatch
   }
 }
