@@ -34,8 +34,8 @@ public class TurnToTarget extends Command {
       steering_adjust = Robot.m_limelight.getK() * Robot.m_limelight.getX();
     }    
     
-    double left = -0.5;
-    double right = -0.5;
+    double left = -0.45;
+    double right = -0.45;
     
     left-=steering_adjust;
     right+=steering_adjust;
@@ -46,7 +46,7 @@ public class TurnToTarget extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.m_limelight.getX() > -.25 && Robot.m_limelight.getX() < .25) || isTimedOut();
+    return (Robot.m_limelight.getX() > -.15 && Robot.m_limelight.getX() < .15) || isTimedOut();
   }
 
   // Called once after isFinished returns true

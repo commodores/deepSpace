@@ -17,7 +17,7 @@ public class MiddleHatchLeft extends CommandGroup {
   public MiddleHatchLeft() {
     addSequential(new ExtendHatcher(),.1);
     addSequential(new Pause());
-    addSequential(new AutoForward(75,25));
+    addSequential(new AutoForward(85,25));
     addSequential(new TurnToTarget(), 25);
     addSequential(new ExtendGripper(),.1);
     addSequential(new DriveFwdToHatch(), 25);
@@ -30,8 +30,9 @@ public class MiddleHatchLeft extends CommandGroup {
     addSequential(new AutoForward(100, 25));
     addSequential(new TurnToTarget(), 25);
     addSequential(new DriveFwdToHatch(), 25);
-    addSequential(new RetractHatcher(), .1);
-    //addSequential(new ExtendGripper(), 25);
+    //addSequential(new RetractHatcher(), .1);
+    addSequential(new ExtendGripper(), 25);
+    addSequential(new AutoReverse(16,3));
 
   }
 }
