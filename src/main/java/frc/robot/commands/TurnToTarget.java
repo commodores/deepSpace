@@ -34,8 +34,8 @@ public class TurnToTarget extends Command {
       steering_adjust = Robot.m_limelight.getK() * Robot.m_limelight.getX();
     }    
     
-    double left = -0.45;
-    double right = -0.45;
+    double left = -0.6;
+    double right = -0.6;
     
     left-=steering_adjust;
     right+=steering_adjust;
