@@ -20,7 +20,7 @@ public class RightHatch extends CommandGroup {
     addSequential(new ExtendGripper(), .1);
     
     //Drive forward veering right
-    addSequential(new AutoForward(25,25));
+    addSequential(new AutoForward(50,25));
     addSequential(new AutoTurn(-45, 13));
     addSequential(new TurnToTarget());
 
