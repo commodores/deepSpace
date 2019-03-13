@@ -21,26 +21,24 @@ public class RightHatch extends CommandGroup {
     
     //Drive forward veering right
     addSequential(new AutoForward(25,25));
-    addSequential(new AutoTurn(-90, 13));
-    addSequential(new AutoForward(20,15));
+    addSequential(new AutoTurn(-45, 13));
+    addSequential(new TurnToTarget());
 
-    //Turn left ~ 90 degrees
-    addSequential(new AutoTurn(45,13));
-    
-    //Turn to hatch
-
-    //Forward to score
+    //Turn left ~ 90 degrees and Forward to score
+    addSequential(new DriveFwdToHatch());
 
     //Retract Gripper
+    addSequential(new RetractGripper(), .1);
 
     //Reverse
-
-    //Turn left 90
+    addSequential(new AutoReverse(16,3));
 
     //Drive forward veering left
-
+    addSequential(new AutoTurn(110,13));
     //Turn to hatch
-
+    addSequential(new TurnToTarget(), 25);
     //Forward to retrieve Hatch
+    addSequential(new DriveFwdToHatch(), 25);
+    addSequential(new ExtendGripper(), .1);
   }
 }

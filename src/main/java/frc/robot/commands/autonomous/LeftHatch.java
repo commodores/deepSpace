@@ -7,6 +7,7 @@
 
 package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.commands.*;
 
 public class LeftHatch extends CommandGroup {
   /**
@@ -14,26 +15,34 @@ public class LeftHatch extends CommandGroup {
    */
   public LeftHatch() {
     //Extend Hatcher and Gripper
+    addSequential(new ExtendGripper(), .1);
+    addSequential(new ExtendHatcher(), .1);
     
     //Drive forward veering left
-
-    //Turn right 90 degrees
+    addSequential(new AutoForward(50,25));
+    addSequential(new AutoTurn(45,13));
 
     //Turn to hatch
-
+    addSequential(new TurnToTarget(),25);
+  
     //Forward to score
-
+    addSequential(new DriveFwdToHatch(), 25);
     //Retract Gripper
+    addSequential(new RetractGripper(), .1);
 
     //Reverse
+    addSequential(new AutoReverse(16,3));
 
     //Turn right 90
+    addSequential(new AutoTurn(110,13));
 
-    //Drive forward veering right
+    //Drive forward veering right and Turn to hatch
+    addSequential(new TurnToTarget(), 25);
 
-    //Turn to hatch
-
-    //Forward to retrieve Hatch
+    //Forward to retrieve Hatch and reverse
+    addSequential(new DriveFwdToHatch(), 25);
+    addSequential(new ExtendGripper(), .1);
+    addSequential(new AutoReverse(16,3));
 
   }
 }
