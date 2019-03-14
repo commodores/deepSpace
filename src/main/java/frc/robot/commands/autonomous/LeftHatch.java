@@ -19,8 +19,8 @@ public class LeftHatch extends CommandGroup {
     addSequential(new ExtendHatcher(), .1);
     
     //Drive forward veering left
-    addSequential(new AutoForward(50,25));
-    addSequential(new AutoTurn(45,13));
+    addSequential(new VeerLeft());
+    addSequential(new AutoTurn(90,13));
 
     //Turn to hatch
     addSequential(new TurnToTarget(),25);
@@ -31,8 +31,8 @@ public class LeftHatch extends CommandGroup {
     addSequential(new RetractGripper(), .1);
 
     //Reverse
-    addSequential(new AutoReverse(16,3));
-
+        addSequential(new AutoReverse(16,3));
+    /*
     //Turn right 90
     addSequential(new AutoTurn(110,13));
 
@@ -43,6 +43,6 @@ public class LeftHatch extends CommandGroup {
     addSequential(new DriveFwdToHatch(), 25);
     addSequential(new ExtendGripper(), .1);
     addSequential(new AutoReverse(16,3));
-
+*/
   }
 }

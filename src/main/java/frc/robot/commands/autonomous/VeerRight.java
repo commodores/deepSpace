@@ -8,17 +8,13 @@
 package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.*;
+import frc.robot.Robot;
 
-public class DriveFwdToHatch extends Command {
-  public DriveFwdToHatch() {
+public class VeerRight extends Command {
+  public VeerRight() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    requires(Robot.m_gyro);
-    requires(Robot.m_lidar);
-
-    setTimeout(5.0);
   }
 
   // Called just before this Command runs the first time
@@ -31,26 +27,23 @@ public class DriveFwdToHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.65 - pTerm, -.65 + pTerm);
+    Robot.m_driveTrain.driveTank(-.75 , -.7 );
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_lidar.getDistance() < 13 || isTimedOut();
+    return Robot.m_driveTrain.getLeftEncoderInches() > 215 || isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

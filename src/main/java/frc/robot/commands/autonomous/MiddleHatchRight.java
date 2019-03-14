@@ -30,7 +30,8 @@ public class MiddleHatchRight extends CommandGroup {
     addSequential(new AutoForward(100, 25));
     addSequential(new TurnToTarget(), 25);
     addSequential(new DriveFwdToHatch(), 25);
-    addSequential(new RetractHatcher(), .1);
-    //addSequential(new ExtendGripper(), 25);
+    //addSequential(new RetractHatcher(), .1);
+    addSequential(new ExtendGripper(), 25);
+    addSequential(new AutoReverse(16,3));
   }
 }
