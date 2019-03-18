@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.commands.*;
 import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.*;
 
 
@@ -61,7 +62,12 @@ public class Robot extends TimedRobot {
     m_pressure = new PSensor();
     m_oi = new OI();
     
-    CameraServer.getInstance().startAutomaticCapture();
+    new Thread(() -> {
+      UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+      camera.setResolution(320, 240);
+      camera.setFPS(10);
+    }).start();
+  
 
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
     m_chooser.addOption("Left Hab", new LeftHatch());

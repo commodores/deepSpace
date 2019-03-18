@@ -56,7 +56,7 @@ public class OI {
     btn7.whenPressed(new ExtendLock());
     btn8.whenPressed(new RetractLock()); 
     btn9.whileHeld(new AllWheelsFwd());
-    //btn10.whileHeld(new AllWheelsRev());
+    btn10.whileHeld(new AllWheelsRev());
 
     
     arcadeBtn1.whenPressed(new ExtendFrontLeg());

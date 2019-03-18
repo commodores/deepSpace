@@ -72,13 +72,13 @@ public class Climber extends Subsystem {
   }
   
   public void driveFwd(){
-    frontLegMotor.set(.25);
-    rearLegMotor.set(-.25);
+    frontLegMotor.set(-.5);
+    rearLegMotor.set(.5);
   }
   
   public void driveBwd(){
-    frontLegMotor.set(-.25);
-    rearLegMotor.set(.25);
+    frontLegMotor.set(.5);
+    rearLegMotor.set(-.5);
   }
   
   public void stopDrive(){

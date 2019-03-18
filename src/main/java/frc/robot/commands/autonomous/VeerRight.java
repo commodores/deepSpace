@@ -27,7 +27,7 @@ public class VeerRight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_driveTrain.driveTank(-.75 , -.7 );
+    Robot.m_driveTrain.driveTank(-.73 , -.7 );
   }
 
   // Make this return true when this Command no longer needs to run execute()

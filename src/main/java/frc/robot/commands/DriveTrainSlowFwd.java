@@ -28,7 +28,7 @@ public class DriveTrainSlowFwd extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.4 - pTerm, -.4 + pTerm);
+    Robot.m_driveTrain.driveTank(-.5 - pTerm, -.5 + pTerm);
   }
 
   // Make this return true when this Command no longer needs to run execute()
