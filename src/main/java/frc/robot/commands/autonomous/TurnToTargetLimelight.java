@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class TurnToTargetLimelight extends Command {
   double lastError = 0;
   double error_sum = 0;
-  double kp = 0.021;
+  double kp = 0.21;
   double ki = 0.0;
   double kd = 0.15;
 
@@ -48,7 +48,7 @@ public class TurnToTargetLimelight extends Command {
       if(output > 0) output += 0.1;
       else output -= 0.1;
 
-      Robot.m_driveTrain.driveTank(output, -output);
+      Robot.m_driveTrain.driveTank(-output, output);
   }
   
   // Make this return true when this Command no longer needs to run execute()
