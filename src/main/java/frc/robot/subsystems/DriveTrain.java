@@ -13,8 +13,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -23,51 +22,16 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private static final double ENCODER_TICKS_PER_REVOLUTION = 20500;
-	private static final double WHEEL_CIRCUMFERENCE_INCHES = 6 * Math.PI;
-  
   public final double driveTrainGain = .015;
   
 
   private final WPI_TalonSRX leftMaster = RobotMap.driveTrainLeftMaster;
-  private final WPI_TalonSRX leftSlave1 = RobotMap.driveTrainLeftSlave1;
-  private final WPI_TalonSRX leftSlave2 = RobotMap.driveTrainLeftSlave2;
-
   private final WPI_TalonSRX rightMaster = RobotMap.driveTrainRightMaster;
-  private final WPI_TalonSRX rightSlave1 = RobotMap.driveTrainRightSlave1;
-  private final WPI_TalonSRX rightSlave2 = RobotMap.driveTrainRightSlave2;
-
+  
   private final DifferentialDrive m_drive;
 
     
   public DriveTrain() {
-
-    leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
-
-    rightMaster.setInverted(false);
-    rightSlave1.setInverted(false);
-    rightSlave2.setInverted(false);
-    leftMaster.setInverted(false);
-    leftSlave1.setInverted(false);
-    leftSlave2.setInverted(false);
-
-    leftMaster.setSensorPhase(true);
-
-    rightMaster.configOpenloopRamp(.5);
-    leftMaster.configOpenloopRamp(.5);
-
-    leftSlave1.follow(leftMaster);
-    leftSlave2.follow(leftMaster);
-    rightSlave1.follow(rightMaster);
-    rightSlave2.follow(rightMaster);
-    
-    rightMaster.setNeutralMode(NeutralMode.Brake);
-    rightSlave1.setNeutralMode(NeutralMode.Brake);
-    rightSlave2.setNeutralMode(NeutralMode.Brake);
-    leftMaster.setNeutralMode(NeutralMode.Brake);
-    leftSlave1.setNeutralMode(NeutralMode.Brake);
-    leftSlave2.setNeutralMode(NeutralMode.Brake);
-    
     m_drive = new DifferentialDrive(leftMaster, rightMaster);
     m_drive.setSafetyEnabled(false);
   }
@@ -91,16 +55,32 @@ public class DriveTrain extends Subsystem {
     m_drive.stopMotor();
   }
 
-  public double getLeftEncoder() {
-    return leftMaster.getSelectedSensorPosition();
+  private double getNativeUnitsFromInches (double inches) {
+    return inches*RobotMap.TICKS_PER_REVOLUTION/RobotMap.WHEEL_DIAMETER/Math.PI;
+  }
+  
+  private double getInchesFromNativeUnits (double native_units) {
+    return native_units/RobotMap.TICKS_PER_REVOLUTION*RobotMap.WHEEL_DIAMETER*Math.PI;
   }
 
-  public double getLeftEncoderInches() {
-    return getLeftEncoder() / ENCODER_TICKS_PER_REVOLUTION * WHEEL_CIRCUMFERENCE_INCHES;
+  public double getLeftDistance() {
+    return getInchesFromNativeUnits(leftMaster.getSelectedSensorPosition(0));
+  }
+  
+  public double getRightDistance() {
+    return getInchesFromNativeUnits(rightMaster.getSelectedSensorPosition(0));
   }
 
-  public void resetEncoders() {
-		leftMaster.setSelectedSensorPosition(0, 0, 0);
+  public double getTotalDistance() {
+    return (getLeftDistance()+getRightDistance()) / 2;
+  }
+
+  public synchronized void resetEncoders() {
+    leftMaster.getSensorCollection().setQuadraturePosition(0, 10);
+    leftMaster.setSelectedSensorPosition(0, 0, 10);
+    rightMaster.getSensorCollection().setQuadraturePosition(0, 10);
+    rightMaster.setSelectedSensorPosition(0, 0, 10);
+    Robot.m_gyro.zero();    
   }
 
 }

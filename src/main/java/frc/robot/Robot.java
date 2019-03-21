@@ -122,7 +122,8 @@ public class Robot extends TimedRobot {
     
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
-    SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftEncoderInches());
+    SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftDistance());
+    SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getRightDistance());
     SmartDashboard.putNumber("Pressure", m_pressure.getPressure());
   }
 

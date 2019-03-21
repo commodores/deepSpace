@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Spark;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class RobotMap {
   //driveTrain devices
@@ -41,6 +43,14 @@ public class RobotMap {
   //sensors and misc devices
   public static Compressor compressor;
 
+  //constants
+  //constants
+  public static final int TICKS_PER_REVOLUTION = 4096;
+  public static final double WHEEL_DIAMETER = 0.15 * 3.279;   //meters
+  public static final double MAX_VELOCITY = 20;   //meters/sec
+
+  public static final double BASE_SPEED = 0.2;
+
   public static void init(){
 
     //driveTrain device initialization
@@ -52,6 +62,34 @@ public class RobotMap {
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
     driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
+    driveTrainLeftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+    driveTrainRightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+
+    driveTrainRightMaster.setInverted(false);
+    driveTrainRightSlave1.setInverted(false);
+    driveTrainRightSlave2.setInverted(false);
+    driveTrainLeftMaster.setInverted(false);
+    driveTrainLeftSlave1.setInverted(false);
+    driveTrainLeftSlave2.setInverted(false);
+
+    driveTrainLeftMaster.setSensorPhase(true);
+    driveTrainRightMaster.setSensorPhase(false);
+
+    driveTrainRightMaster.configOpenloopRamp(.35);
+    driveTrainLeftMaster.configOpenloopRamp(.35);
+
+    driveTrainLeftSlave1.follow(driveTrainLeftMaster);
+    driveTrainLeftSlave2.follow(driveTrainLeftMaster);
+    driveTrainRightSlave1.follow(driveTrainRightMaster);
+    driveTrainRightSlave2.follow(driveTrainRightMaster);
+    
+    driveTrainRightMaster.setNeutralMode(NeutralMode.Brake);
+    driveTrainRightSlave1.setNeutralMode(NeutralMode.Brake);
+    driveTrainRightSlave2.setNeutralMode(NeutralMode.Brake);
+    driveTrainLeftMaster.setNeutralMode(NeutralMode.Brake);
+    driveTrainLeftSlave1.setNeutralMode(NeutralMode.Brake);
+    driveTrainLeftSlave2.setNeutralMode(NeutralMode.Brake);
+
     // Production Robot
     //motorShifter = new Solenoid(0);
 
@@ -60,7 +98,7 @@ public class RobotMap {
     
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
-        ledControllerRevBlinkin.setInverted(false);
+    ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
     //rearLegLock = new Solenoid(1);
