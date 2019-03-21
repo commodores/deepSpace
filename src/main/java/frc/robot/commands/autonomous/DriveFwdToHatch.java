@@ -11,14 +11,15 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
 
 public class DriveFwdToHatch extends Command {
-  public DriveFwdToHatch() {
+
+  public DriveFwdToHatch(double getTimeOut) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
     requires(Robot.m_gyro);
     requires(Robot.m_lidar);
 
-    setTimeout(5.0);
+    setTimeout(getTimeOut);
   }
 
   // Called just before this Command runs the first time
@@ -32,7 +33,12 @@ public class DriveFwdToHatch extends Command {
   @Override
   protected void execute() {
     double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
-    Robot.m_driveTrain.driveTank(-.65 - pTerm, -.65 + pTerm);
+
+    if(Robot.m_lidar.getDistance() > 25){
+      Robot.m_driveTrain.driveTank(-.65 - pTerm, -.65 + pTerm);
+    } else {
+      Robot.m_driveTrain.driveTank(-.45 - pTerm, -.45 + pTerm);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -20,14 +20,14 @@ public class RightHatch extends CommandGroup {
     addSequential(new AutoTurn(-90,3));
 
     //Turn to hatch
-    addSequential(new TurnToTargetLimelight(),3);
+    addSequential(new TurnToTargetLimelight());
 
     //Extend Hatcher and Gripper
     addSequential(new ExtendGripper(), .1);
     addSequential(new ExtendHatcher(), .1);
   
     //Forward to score
-    addSequential(new DriveFwdToHatch(), 5);
+    addSequential(new DriveFwdToHatch(3));
     //Retract Gripper
     addSequential(new RetractGripper(), .1);
 
