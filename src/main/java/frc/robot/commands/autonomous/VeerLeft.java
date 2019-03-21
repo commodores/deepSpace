@@ -15,7 +15,7 @@ public class VeerLeft extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    setTimeout(10);
+    setTimeout(7);
   }
 
   // Called just before this Command runs the first time

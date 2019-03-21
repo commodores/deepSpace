@@ -10,28 +10,20 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.*;
 
-public class MiddleHatchRight extends CommandGroup {
+public class MiddleHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public MiddleHatchRight() {
-    addSequential(new ExtendHatcher(),.1);
-    addSequential(new Pause());
-    addSequential(new AutoForward(25,25));
-    addSequential(new TurnToTargetLimelight(), 25);
+  public MiddleHatch() {
+    
+    addSequential(new AutoForward(25,3));
+    addSequential(new TurnToTargetLimelight(), 3);
     addSequential(new ExtendGripper(),.1);
-    addSequential(new DriveFwdToHatch(), 25);
+    addSequential(new ExtendHatcher(),.1);
+    addSequential(new DriveFwdToHatch(), 5);
     addSequential(new RetractGripper(),.1);
     addSequential(new Pause());
     addSequential(new AutoReverse(16,3));
-    addSequential(new AutoTurn(90, 13));
-    addSequential(new AutoForward(115, 25));
-    addSequential(new AutoTurn(86, 30));
-    addSequential(new AutoForward(100, 25));
-    addSequential(new TurnToTargetLimelight(), 25);
-    addSequential(new DriveFwdToHatch(), 25);
-    //addSequential(new RetractHatcher(), .1);
-    addSequential(new ExtendGripper(), 25);
-    addSequential(new AutoReverse(16,3));
+
   }
 }
