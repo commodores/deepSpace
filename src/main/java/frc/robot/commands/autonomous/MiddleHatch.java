@@ -16,10 +16,11 @@ public class MiddleHatch extends CommandGroup {
    */
   public MiddleHatch() {
     
-    addSequential(new AutoForward(25,3));
+    addSequential(new AutoForward(15,3));
     addSequential(new TurnToTargetLimelight());
-    addSequential(new ExtendGripper(),.1);
     addSequential(new ExtendHatcher(),.1);
+    addSequential(new ExtendGripper(),.1);
+    addSequential(new Pause()); 
     addSequential(new DriveFwdToHatch(5));
     addSequential(new RetractGripper(),.1);
     addSequential(new Pause());

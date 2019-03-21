@@ -23,8 +23,8 @@ public class LeftHatch extends CommandGroup {
     addSequential(new TurnToTargetLimelight());
 
     //Extend Hatcher and Gripper
-    addSequential(new ExtendGripper(), .1);
-    addSequential(new ExtendHatcher(), .1);
+    addSequential(new ExtendHatcher(),.1);
+    addSequential(new ExtendGripper(),.1);
   
     //Forward to score
     addSequential(new DriveFwdToHatch(3));

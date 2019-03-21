@@ -67,11 +67,12 @@ public class Robot extends TimedRobot {
       camera.setResolution(320, 240);
       camera.setFPS(10);
     }).start();
-  
+    
+    m_driveTrain.resetEncoders();
 
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
     m_chooser.addOption("Left Hab", new LeftHatch());
-    m_chooser.addOption("Middle Hab Left Cargo", new MiddleHatch());
+    m_chooser.addOption("Middle Hab", new MiddleHatch());
     m_chooser.addOption("Right Single", new RightHatch());
     
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -122,7 +123,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftDistance());
-    SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getRightDistance());
+    SmartDashboard.putNumber("Right Encoder Distance", m_driveTrain.getRightDistance());
     SmartDashboard.putNumber("Pressure", m_pressure.getPressure());
   }
 
