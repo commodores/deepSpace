@@ -20,12 +20,12 @@ public class RightHatch extends CommandGroup {
     addSequential(new ExtendGripper(), .1);
     addSequential(new ExtendHatcher(), .1);
     
-    //Drive forward veering left
+    //Drive forward veering right
     addSequential(new VeerRight());
     addSequential(new AutoTurn(-100,13));
 
     //Turn to hatch
-    addSequential(new TurnToTarget(),25);
+    addSequential(new TurnToTargetLimelight(),25);
   
     //Forward to score
     addSequential(new DriveFwdToHatch(), 25);

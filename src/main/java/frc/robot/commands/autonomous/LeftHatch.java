@@ -23,7 +23,7 @@ public class LeftHatch extends CommandGroup {
     addSequential(new AutoTurn(90,13));
 
     //Turn to hatch
-    addSequential(new TurnToTarget(),25);
+    addSequential(new TurnToTargetLimelight(),25);
   
     //Forward to score
     addSequential(new DriveFwdToHatch(), 25);

@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     
     //Commands to Dashboard
-    SmartDashboard.putData("Turn To Target", new TurnToTarget());
+    SmartDashboard.putData("Turn To Target", new TurnToTargetLimelight());
 
     //SmartDashboard.putData("All Wheels Forward", new AllWheelsFwd());
     //SmartDashboard.putData("All Wheels Reverse", new AllWheelsRev());
