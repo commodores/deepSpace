@@ -13,9 +13,9 @@ import frc.robot.Robot;
 public class TurnToTargetLimelight extends Command {
   double lastError = 0;
   double error_sum = 0;
-  double kp = 0.21;
+  double kp = 0.15;
   double ki = 0.0;
-  double kd = 0.15;
+  double kd = 0.015;
 
   boolean reachedTarget;
 
@@ -56,8 +56,8 @@ public class TurnToTargetLimelight extends Command {
   protected boolean isFinished() {
     if(!Robot.m_limelight.targetExists()) return true;
 
-    if(Math.abs(Robot.m_limelight.getX()) < 1 && !reachedTarget) {
-      setTimeout(0.5);
+    if(Math.abs(Robot.m_limelight.getX()) < .5 && !reachedTarget) {
+      setTimeout(0.25);
       reachedTarget = true;
       return false;
     }
