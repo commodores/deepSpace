@@ -25,7 +25,7 @@ public class RobotMap {
 
   public static SpeedController ledControllerRevBlinkin;
   
-  public static Solenoid motorShifter;
+  public static DoubleSolenoid motorShifter;
   
   //climber devices
   public static Solenoid rearLegLock;
@@ -46,24 +46,24 @@ public class RobotMap {
     //driveTrain device initialization
     driveTrainLeftMaster = new WPI_TalonSRX(2);
     driveTrainLeftSlave1 = new WPI_TalonSRX(1);
-    driveTrainLeftSlave2 = new WPI_TalonSRX(0);
+    driveTrainLeftSlave2 = new WPI_TalonSRX(3);
 
     driveTrainRightMaster = new WPI_TalonSRX(4);
     driveTrainRightSlave1 = new WPI_TalonSRX(5);
     driveTrainRightSlave2 = new WPI_TalonSRX(6);
 
     // Production Robot
-    motorShifter = new Solenoid(0);
+    //motorShifter = new Solenoid(0);
 
     // Practice Robot
-    //motorShifter = new Solenoid(0, 1);
+    motorShifter = new DoubleSolenoid(0, 1);
     
     //led device initialization
     ledControllerRevBlinkin = new Spark(6);
         ledControllerRevBlinkin.setInverted(false);
 
     //climber device initialization
-    rearLegLock = new Solenoid(1);
+    //rearLegLock = new Solenoid(1);
     rearLegSolenoid = new DoubleSolenoid(2, 3);
     frontLegSolenoid = new DoubleSolenoid(4, 5);
     
