@@ -6,10 +6,6 @@ import frc.robot.*;
 import frc.util.PIDOutputInterface;
 
 public class AlignToTarget extends Command {
-    static double kP = 0.03;
-    static double kI = 0;
-    static double kD = 0;
-    static double outputMagnitude = 0.6;
     double setpoint = 0;
 
     public AlignToTarget() {
@@ -23,10 +19,10 @@ public class AlignToTarget extends Command {
     protected void initialize() {
         Robot.m_driveTrain.resetAngle();
 
-        Robot.m_driveTrain.limelightPIDController.setP(kP);
-        Robot.m_driveTrain.limelightPIDController.setI(kI);
-        Robot.m_driveTrain.limelightPIDController.setD(kD);
-        Robot.m_driveTrain.limelightPIDController.setOutputRange(-outputMagnitude, outputMagnitude);
+        Robot.m_driveTrain.limelightPIDController.setP(RobotMap.kP);
+        Robot.m_driveTrain.limelightPIDController.setI(RobotMap.kI);
+        Robot.m_driveTrain.limelightPIDController.setD(RobotMap.kD);
+        Robot.m_driveTrain.limelightPIDController.setOutputRange(-RobotMap.outputMagnitude, RobotMap.outputMagnitude);
 
         if(Robot.m_limelight.targetExists())
             Robot.m_driveTrain.limelightPIDController.enable();

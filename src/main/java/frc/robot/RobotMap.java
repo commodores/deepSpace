@@ -51,6 +51,13 @@ public class RobotMap {
 
   public static final double BASE_SPEED = 0.2;
 
+  public static final double kP = 0.03;        // Start with P = 10% of your max output, double until you get a quarter-decay oscillation
+	public static final double kI = 0;           // Start with I = P / 100
+	public static final double kD = 0;           // Start with D = P * 10
+  public static final double period = 0.01;
+
+  public static final double outputMagnitude = 0.6;
+
   public static void init(){
 
     //driveTrain device initialization

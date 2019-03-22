@@ -36,20 +36,21 @@ public class DriveTrain extends Subsystem {
   private final DifferentialDrive m_drive;
 
   //Test Limelight PID
-  static double kP = 0.03;        // Start with P = 10% of your max output, double until you get a quarter-decay oscillation
-	static double kI = 0;           // Start with I = P / 100
-	static double kD = 0;           // Start with D = P * 10
-  static double period = 0.01;
-
+  
   public AHRS navX = new AHRS(SPI.Port.kMXP);
   
   public PIDOutputInterface limelightPIDOutput = new PIDOutputInterface();
-  public PIDController limelightPIDController = new PIDController(kP, kI, kD, navX, limelightPIDOutput);
+  public PIDController limelightPIDController = new PIDController(RobotMap.kP, RobotMap.kI, RobotMap.kD, navX, limelightPIDOutput);
 
     
   public DriveTrain() {
     m_drive = new DifferentialDrive(leftMaster, rightMaster);
     m_drive.setSafetyEnabled(false);
+
+    navX.reset();
+		navX.zeroYaw();
+		limelightPIDController.setName("Drive Train", "Limelight PID");
+		limelightPIDController.setAbsoluteTolerance(1.5);
   }
 
   @Override
@@ -92,7 +93,6 @@ public class DriveTrain extends Subsystem {
   }
 
   public double getAngle(){
-		// Angle is negated due to that navX being upside-down on Susan
 		return -navX.getAngle();
 	}
 
