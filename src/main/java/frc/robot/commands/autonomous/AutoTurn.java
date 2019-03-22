@@ -19,7 +19,6 @@ public class AutoTurn extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    requires(Robot.m_gyro);
     degrees = getDegrees;
     timeOut = getTimeOut;
     setTimeout(timeOut);
@@ -28,7 +27,7 @@ public class AutoTurn extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetAngle();
     Robot.m_driveTrain.resetEncoders();
   }
 
@@ -46,9 +45,9 @@ public class AutoTurn extends Command {
   @Override
   protected boolean isFinished() {
     if(degrees > 0){
-      return Robot.m_gyro.getYaw() > degrees || isTimedOut();
+      return Robot.m_driveTrain.getYaw() > degrees || isTimedOut();
     } else {
-      return Robot.m_gyro.getYaw() < degrees || isTimedOut();
+      return Robot.m_driveTrain.getYaw() < degrees || isTimedOut();
     }
   }
 

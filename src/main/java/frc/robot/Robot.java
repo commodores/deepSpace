@@ -30,7 +30,6 @@ public class Robot extends TimedRobot {
   public static Climber m_climber;
   public static Hatcher m_hatcher;
   public static LimeLight m_limelight;
-  public static IMU m_gyro;
   public static LIDAR m_lidar;
   public static MotorShifter m_motorShifter;
   public static RearLegLock m_rearLegLock;
@@ -53,7 +52,6 @@ public class Robot extends TimedRobot {
     m_driveTrain = new DriveTrain();
     m_climber = new Climber();
     m_hatcher = new Hatcher();
-    m_gyro = new IMU();
     m_limelight = new LimeLight();
     m_lidar = new LIDAR();
     m_motorShifter = new MotorShifter();
@@ -120,7 +118,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Lidar Distance", m_lidar.getDistance());
     
-    SmartDashboard.putNumber("Gyro Angle", m_gyro.getYaw());
+    SmartDashboard.putNumber("Gyro Angle", m_driveTrain.getYaw());
 
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftDistance());
     SmartDashboard.putNumber("Right Encoder Distance", m_driveTrain.getRightDistance());

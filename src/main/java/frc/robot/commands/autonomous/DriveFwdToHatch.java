@@ -16,7 +16,6 @@ public class DriveFwdToHatch extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    requires(Robot.m_gyro);
     requires(Robot.m_lidar);
 
     setTimeout(getTimeOut);
@@ -26,13 +25,13 @@ public class DriveFwdToHatch extends Command {
   @Override
   protected void initialize() {
     Robot.m_driveTrain.resetEncoders();
-    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_driveTrain.getYaw());
 
     if(Robot.m_lidar.getDistance() > 25){
       Robot.m_driveTrain.driveTank(-.65 - pTerm, -.65 + pTerm);

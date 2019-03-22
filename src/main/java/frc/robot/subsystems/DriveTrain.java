@@ -15,6 +15,11 @@ import frc.robot.RobotMap;
 import frc.robot.commands.*;
 import frc.robot.Robot;
 
+import frc.util.PIDOutputInterface;
+import edu.wpi.first.wpilibj.PIDController;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+
 /**
  * Add your docs here.
  */
@@ -29,6 +34,17 @@ public class DriveTrain extends Subsystem {
   private final WPI_TalonSRX rightMaster = RobotMap.driveTrainRightMaster;
   
   private final DifferentialDrive m_drive;
+
+  //Test Limelight PID
+  static double kP = 0.03;        // Start with P = 10% of your max output, double until you get a quarter-decay oscillation
+	static double kI = 0;           // Start with I = P / 100
+	static double kD = 0;           // Start with D = P * 10
+  static double period = 0.01;
+
+  public AHRS navX = new AHRS(SPI.Port.kMXP);
+  
+  public PIDOutputInterface limelightPIDOutput = new PIDOutputInterface();
+  public PIDController limelightPIDController = new PIDController(kP, kI, kD, navX, limelightPIDOutput);
 
     
   public DriveTrain() {
@@ -75,12 +91,33 @@ public class DriveTrain extends Subsystem {
     return (getLeftDistance()+getRightDistance()) / 2;
   }
 
+  public double getAngle(){
+		// Angle is negated due to that navX being upside-down on Susan
+		return -navX.getAngle();
+	}
+
+	public double getYaw() {
+		return navX.getYaw();
+	}
+
+	public double getRoll(){
+		return navX.getRoll();
+	}
+
+	public double getPitch(){
+		return navX.getPitch();
+	}
+
+	public void resetAngle(){
+		navX.reset();
+	}
+
   public synchronized void resetEncoders() {
     leftMaster.getSensorCollection().setQuadraturePosition(0, 10);
     leftMaster.setSelectedSensorPosition(0, 0, 10);
     rightMaster.getSensorCollection().setQuadraturePosition(0, 10);
     rightMaster.setSelectedSensorPosition(0, 0, 10);
-    Robot.m_gyro.zero();    
+    Robot.m_driveTrain.resetAngle();    
   }
 
 }

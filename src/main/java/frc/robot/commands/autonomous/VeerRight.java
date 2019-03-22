@@ -21,7 +21,7 @@ public class VeerRight extends Command {
   @Override
   protected void initialize() {
     Robot.m_driveTrain.resetEncoders();
-    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run

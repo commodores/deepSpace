@@ -15,7 +15,6 @@ public class DriveManual extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    requires(Robot.m_gyro);
   }
 
   // Called just before this Command runs the first time

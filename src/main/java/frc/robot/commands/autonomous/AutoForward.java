@@ -19,7 +19,6 @@ public class AutoForward extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_driveTrain);
-    requires(Robot.m_gyro);
     distance = getDistance;
     timeOut = getTimeOut;
     setTimeout(timeOut);
@@ -29,13 +28,13 @@ public class AutoForward extends Command {
   @Override
   protected void initialize() {
     Robot.m_driveTrain.resetEncoders();
-    Robot.m_gyro.zero();
+    Robot.m_driveTrain.resetAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_gyro.getYaw());
+    double pTerm = Robot.m_driveTrain.driveTrainGain * (0.0 - Robot.m_driveTrain.getYaw());
     Robot.m_driveTrain.driveTank(-.85 - pTerm, -.85 + pTerm);
   }
 
