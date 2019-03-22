@@ -8,6 +8,7 @@
 package frc.robot;
 
 import frc.robot.commands.*;
+import frc.robot.commands.autonomous.AlignToTarget;
 import frc.robot.commands.autonomous.TurnToTargetLimelight;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -66,7 +67,7 @@ public class OI {
     arcadeBtn4.whenPressed(new RetractFrontLeg());
     arcadeBtn5.whenPressed(new RetractBothLegs());
     arcadeBtn6.whenPressed(new RetractRearLeg());
-    arcadeBtn7.whenPressed(new TurnToTargetLimelight());
+    arcadeBtn7.whenPressed(new AlignToTarget());
     arcadeBtn8.whileHeld(new DriveTrainSlowFwd());
     
 

@@ -13,7 +13,7 @@ public class Pause extends Command {
   public Pause() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(.25);
+    setTimeout(.5);
   }
 
   // Called just before this Command runs the first time

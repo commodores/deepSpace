@@ -37,7 +37,7 @@ public class AlignToTarget extends Command {
             Robot.m_driveTrain.limelightPIDController.setSetpoint(setpoint);
 
             double output =  Robot.m_driveTrain.limelightPIDOutput.getPIDOutput();
-            Robot.m_driveTrain.driveTank(output, -output);
+            Robot.m_driveTrain.driveTank(-output, output);
     }
 
     // Make this return true when this Command no longer needs to run execute()

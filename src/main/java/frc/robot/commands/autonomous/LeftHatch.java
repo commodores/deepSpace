@@ -20,7 +20,7 @@ public class LeftHatch extends CommandGroup {
     addSequential(new AutoTurn(90,3));
 
     //Turn to hatch
-    addSequential(new TurnToTargetLimelight());
+    addSequential(new AlignToTarget());
 
     //Extend Hatcher and Gripper
     addSequential(new ExtendHatcher(),.1);

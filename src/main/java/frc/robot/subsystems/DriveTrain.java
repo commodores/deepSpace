@@ -50,7 +50,7 @@ public class DriveTrain extends Subsystem {
     navX.reset();
 		navX.zeroYaw();
 		limelightPIDController.setName("Drive Train", "Limelight PID");
-		limelightPIDController.setAbsoluteTolerance(1.5);
+		limelightPIDController.setAbsoluteTolerance(1.2);
   }
 
   @Override

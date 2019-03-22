@@ -15,12 +15,12 @@ public class RightHatch extends CommandGroup {
    * Add your docs here.
    */
   public RightHatch() {
-    //Drive forward veering left
+    //Drive forward veering right
     addSequential(new VeerRight());
     addSequential(new AutoTurn(-90,3));
 
     //Turn to hatch
-    addSequential(new TurnToTargetLimelight());
+    addSequential(new AlignToTarget());
 
     //Extend Hatcher and Gripper
     addSequential(new ExtendHatcher(),.1);
