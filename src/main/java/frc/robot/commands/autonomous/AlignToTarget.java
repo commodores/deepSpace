@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
 import frc.util.PIDOutputInterface;
+import edu.wpi.first.networktables.*;
 
 public class AlignToTarget extends Command {
     double setpoint = 0;
@@ -33,6 +34,14 @@ public class AlignToTarget extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+            if(Robot.m_lidar.getDistance()>75){
+                NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(0);
+            } else if(Robot.m_lidar.getDistance()<=75 && Robot.m_lidar.getDistance()>40){
+                NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
+            } else {
+                NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(2);
+            }
+
             setpoint = Robot.m_limelight.getX();
             Robot.m_driveTrain.limelightPIDController.setSetpoint(setpoint);
 
