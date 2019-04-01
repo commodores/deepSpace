@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class TurnToTargetLimelight extends Command {
   double lastError = 0;
   double error_sum = 0;
-  double kp = .2;
+  double kp = .14;
   double ki = .0;
   double kd = 5.0;
 

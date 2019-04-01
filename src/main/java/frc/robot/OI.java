@@ -67,7 +67,7 @@ public class OI {
     arcadeBtn4.whenPressed(new RetractFrontLeg());
     arcadeBtn5.whenPressed(new RetractBothLegs());
     arcadeBtn6.whenPressed(new RetractRearLeg());
-    arcadeBtn7.whenPressed(new AlignToTarget());
+    arcadeBtn7.whenPressed(new TurnToTargetLimelight());
     arcadeBtn8.whileHeld(new DriveTrainSlowFwd());
     
 

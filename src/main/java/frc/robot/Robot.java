@@ -16,6 +16,7 @@ import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.*;
+import edu.wpi.first.networktables.*;
 
 
 /**
@@ -67,11 +68,12 @@ public class Robot extends TimedRobot {
     }).start();
     
     m_driveTrain.resetEncoders();
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(0);
 
     m_chooser.setDefaultOption("Just Drive", new DriveManual());
     m_chooser.addOption("Left Hab", new LeftHatch());
     m_chooser.addOption("Middle Hab", new MiddleHatch());
-    m_chooser.addOption("Right Single", new RightHatch());
+    m_chooser.addOption("Right Hab", new RightHatch());
     
     SmartDashboard.putData("Auto mode", m_chooser);
     
@@ -80,8 +82,9 @@ public class Robot extends TimedRobot {
 
     //SmartDashboard.putData("All Wheels Forward", new AllWheelsFwd());
     //SmartDashboard.putData("All Wheels Reverse", new AllWheelsRev());
-    SmartDashboard.putData("Drive Train Slow Forward", new DriveTrainSlowFwd());
-    SmartDashboard.putData("Drive Train Slow Reverse", new DriveTrainSlowRev());
+    SmartDashboard.putData("Left Hab Auto", new LeftHatch());
+    SmartDashboard.putData("Middle Hab Auto", new MiddleHatch());
+    SmartDashboard.putData("Right Hab Auto", new RightHatch());
 
     //SmartDashboard.putData("Extend Both Legs", new ExtendBothLegs());
     //SmartDashboard.putData("Extend Front Leg", new ExtendFrontLeg());
@@ -123,6 +126,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Encoder Distance", m_driveTrain.getLeftDistance());
     SmartDashboard.putNumber("Right Encoder Distance", m_driveTrain.getRightDistance());
     SmartDashboard.putNumber("Pressure", m_pressure.getPressure());
+    SmartDashboard.putNumber("Pipeline Number", NetworkTableInstance.getDefault().getTable("limelight").getEntry("getpipe").getDouble(0));
   }
 
   /**

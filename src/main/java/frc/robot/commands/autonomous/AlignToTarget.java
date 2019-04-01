@@ -34,9 +34,9 @@ public class AlignToTarget extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-            if(Robot.m_lidar.getDistance()>75){
+            if(Robot.m_lidar.getDistance()>106){
                 NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(0);
-            } else if(Robot.m_lidar.getDistance()<=75 && Robot.m_lidar.getDistance()>40){
+            } else if(Robot.m_lidar.getDistance()<=106 && Robot.m_lidar.getDistance()>75){
                 NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
             } else {
                 NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(2);

@@ -28,13 +28,13 @@ public class VeerLeft extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_driveTrain.driveTank(-.7 , -.73 );
+    Robot.m_driveTrain.driveTank(-.7 , -.75 );
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_driveTrain.getTotalDistance() > 200 || isTimedOut();
+    return Robot.m_driveTrain.getTotalDistance() > 83 || isTimedOut();
   }
 
   // Called once after isFinished returns true

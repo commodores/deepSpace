@@ -17,10 +17,13 @@ public class RightHatch extends CommandGroup {
   public RightHatch() {
     //Drive forward veering right
     addSequential(new VeerRight());
-    addSequential(new AutoTurn(-90,3));
+    addSequential(new AutoTurn(-98,3));
+
+    //Pause
+    addSequential(new Pause());
 
     //Turn to hatch
-    addSequential(new AlignToTarget());
+    addSequential(new TurnToTargetLimelight());
 
     //Extend Hatcher and Gripper
     addSequential(new ExtendHatcher(),.1);
@@ -28,10 +31,15 @@ public class RightHatch extends CommandGroup {
   
     //Forward to score
     addSequential(new DriveFwdToHatch(3));
+
     //Retract Gripper
     addSequential(new RetractGripper(), .1);
 
     //Reverse
-    addSequential(new AutoReverse(16,3));
+    //addSequential(new AutoReverse(16,3));
+
+    //Retract Extender
+    //addSequential(new RetractHatcher(), .1);
+    
   }
 }
